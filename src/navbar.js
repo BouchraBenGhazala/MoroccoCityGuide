@@ -1,7 +1,7 @@
 // Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from './Images/logo.jpg';
+import logo from './Images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-white ">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
-                    <img src={logo} alt="Logo" className="logo mr-5" width="100" />
+                    <img src={logo} alt="Logo" className="logo mr-5" width="185px" />
                   </Link>
                   <button
                     className="navbar-toggler"
