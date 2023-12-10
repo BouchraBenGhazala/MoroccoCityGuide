@@ -31,32 +31,32 @@ const Navbar = () => {
                   >
                     <ul className="navbar-nav mr-auto h5 ">
                       <li className="nav-item mr-5 ">
-                        <Link to="/" className="nav-link text-danger">
+                        <Link to="/" className="nav-link text-muted">
                           Home
                         </Link>
                       </li>
                       <li className="nav-item mr-5">
-                        <Link to="/stadiums" className="nav-link text-danger">
+                        <Link to="/stadiums" className="nav-link text-muted">
                           Stadiums
                         </Link>
                       </li>
                       <li className="nav-item mr-5">
-                        <Link to="/histories" className="nav-link text-danger">
+                        <Link to="/histories" className="nav-link text-muted">
                           Histories
                         </Link>
                       </li>
                       <li className="nav-item mr-5">
-                        <Link to="/hotels" className="nav-link text-danger">
+                        <Link to="/hotels" className="nav-link text-muted">
                           Hotels
                         </Link>
                       </li>
                       <li className="nav-item mr-5">
-                        <Link to="/traditions" className="nav-link text-danger">
+                        <Link to="/traditions" className="nav-link text-muted">
                           Traditions
                         </Link>
                       </li>
                       <li className="nav-item mr-5">
-                        <Link to="/popular-places" className="nav-link text-danger">
+                        <Link to="/popular-places" className="nav-link text-muted">
                           Popular Places
                         </Link>
                       </li>
