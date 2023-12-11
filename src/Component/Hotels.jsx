@@ -19,7 +19,7 @@ const Hotels=() => {
             <h3><p className='mr-2'>City:<a href={`http://localhost:3000/stadiums/${CityHotels.cityId}`}><span className='text-muted font-weight-bold'>{CityHotels.cityName}</span></a> |</p></h3>
             {CityHotels.hotels.map((hotel, index) => (
               <div key={index}>
-              <h4>{hotel.name}</h4>
+              <h5>{hotel.name}</h5>
               <p>Stars: <span className='text-muted font-weight-bold'>{hotel.stars}</span></p>
               <p>Address: <span className='text-muted font-weight-bold'>{hotel.address}</span></p>
               <p>Amenities: <span className='text-muted font-weight-bold'>{hotel.amenities.join(', ')}</span></p>
