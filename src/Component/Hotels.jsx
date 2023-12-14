@@ -9,7 +9,7 @@ const Hotels=() => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
   return (
-    <div>
+    <div className='ContainerTraditions'>
       <h1>Hotels</h1>
       {CityHotels.map(hotel => (
           <span key={hotel.cityId}>
@@ -17,6 +17,15 @@ const Hotels=() => {
 
           </span>
         ))} <br/>
+                <style>
+          {
+            `
+            .ContainerTraditions{
+              padding-top: 150px;
+            }
+            `
+          }
+        </style>
     </div>
   );
 }

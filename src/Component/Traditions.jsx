@@ -10,7 +10,7 @@ const Traditions=() => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
   return (
-    <div>
+    <div className='ContainerTraditions'>
       <h1>Traditions</h1>
       {CitiesTraditionsCultures.map(city => (
           <div key={city.id}>
@@ -36,7 +36,17 @@ const Traditions=() => {
             <br />
           </div>
         ))}
+        <style>
+          {
+            `
+            .ContainerTraditions{
+              padding-top: 150px;
+            }
+            `
+          }
+        </style>
     </div>
+
   );
 }
 export default Traditions;
