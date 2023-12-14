@@ -24,23 +24,24 @@ const StadiumList = () => {
 
       <div className='container'>
         <div className='row'>
-          <div className='col-lg-8'>
-            {stadiums.map(stadium => (
-              <div key={stadium.id} className='container ml-lg-3 mr-lg-3 mb-5'>
-                <div className='row'>
-                  <h2 className='font-weight-bold mb-2'>{stadium.name}</h2>
-                  <div className="d-flex mb-1">
-                    <p className='mr-2'><a href={`http://localhost:3000/stadiums/${stadium.id}`}><span className='red-color'>{stadium.formerName.join(', ')}</span></a></p>
-                    <p className='mr-2'>Capacity: <span className='field-color font-weight-bold'>{stadium.capacity}</span> seats </p>
-                    <p className='mr-2'>Owner: <span className='field-color font-weight-bold'>{stadium.owner}</span> </p>
-                    <p>Surface: <span className='field-color font-weight-bold'>{stadium.field.surface}</span></p>
-                  </div>
-                  <a href={`http://localhost:3000/stadiums/${stadium.id}`} className="image-container">
-                    <img src={stadium.image} alt={stadium.name} className="img-fluid mb-3 rounded" />
-                  </a>
-                </div>
-              </div>
-            ))}
+          <div className='col-9'>
+          {stadiums.map(stadium => (
+        <div key={stadium.id} className='container ml-3 mr-3'>
+          <div className='row'> 
+            <h3 className='font-weight-bold mb-4'>{stadium.name}</h3><br/>
+          <div className="d-flex mb-2">
+          <p className='mr-2 '><a href={`http://localhost:3000/stadiums/${stadium.id}`}>{stadium.formerName.join(', ')}</a> |</p>
+          <p className='mr-2'>Capacity: <span className='text-muted font-weight-bold'>{stadium.capacity}</span> seats |</p>
+          <p className='mr-2'>Owner: <span className='text-muted font-weight-bold'>{stadium.owner}</span> |</p>
+          <p>Surface: <span className='text-muted font-weight-bold'>{stadium.field.surface}</span></p>
+          </div>
+          <a href={`http://localhost:3000/stadiums/${stadium.id}`}>
+          <img src={stadium.image} alt={stadium.name} width="800" height="400" className="img-fluid mb-5 rounded"/>    
+          </a>
+          </div>
+
+        </div>
+      ))}
           </div>
 
           <div className='col-lg-3 ml-lg-4 bg-COLOR w-100'>
