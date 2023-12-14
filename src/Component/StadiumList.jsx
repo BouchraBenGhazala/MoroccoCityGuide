@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ball from '../pubsImages/ball football.jpg';
+import tshirt from '../pubsImages/maroc tshirt.jpeg';
+import flag from '../pubsImages/Morocco flag.png';
+import casquette from '../pubsImages/moroccan casquette.jpg';
 
 const StadiumList = () => {
   const [stadiums, setStadiums] = useState([]);
@@ -48,11 +51,34 @@ const StadiumList = () => {
               <img src={ball} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
               <div className="card-body">
                 <h5 className="card-title text-success">YANYODO Kid's Soccer Ball Mini Ball</h5>
-                <p className="card-text">The soccer ball is the perfect size for kids to hold and throw. It is portable & lightweight for easy carry and go. Ideal for indoor, outdoor, playground playing, etc.</p>
+                <p className="card-text">The soccer ball is portable & lightweight for easy carry and go. Ideal for indoor, outdoor, playground playing, etc.</p>
                 <a href="https://www.amazon.ae/YANYODO-Durable-Training-Soccer-Toddlers/dp/B07PQPBF56?th=1" target='_blank' className="btn btn-success">Buy now</a>
               </div>
             </div>
-            {/* Add more product cards as needed */}
+            <div className="card text-center mb-3 mt-3">
+              <img src={tshirt} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
+              <div className="card-body">
+                <h5 className="card-title text-success">Moroccan t-shirt</h5>
+                <p className="card-text">T-shirt with moroccan flag.</p>
+                <a href="https://wanglikear.live/product_details/62837804.html" target='_blank' className="btn btn-success">Buy now</a>
+              </div>
+            </div>
+            <div className="card text-center mb-3 mt-3">
+              <img src={flag} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
+              <div className="card-body">
+                <h5 className="card-title text-success">Moroccan flag</h5>
+                <p className="card-text">Buy moroccan flags to celebrate the success.</p>
+                <a href="https://seekflag.com/flag-of-morocco/" target='_blank' className="btn btn-success">Buy now</a>
+              </div>
+            </div>
+            <div className="card text-center mb-3 mt-3">
+              <img src={casquette} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
+              <div className="card-body">
+                <h5 className="card-title text-success">Moroccan casquette</h5>
+                <p className="card-text">Buy moroccan casquettes to show your citizenship.</p>
+                <a href="https://www.jumia.ma/generic-casquette-drapeau-maroc-i-love-morocco-43245755.html" target='_blank' className="btn btn-success">Buy now</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
