@@ -1,0 +1,73 @@
+/* Add this to your CSS */
+.hotel-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.hotel-photos {
+margin-top: 10px; /* Adjust margin as needed */
+text-align: center;
+}
+
+.hotel-details {
+display: flex;
+justify-content: space-between;
+width: 100%;
+margin-top: 10px; /* Adjust margin as needed */
+}
+
+.hotel-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Ajoutez une marge en bas pour séparer les éléments */
+}
+
+.spacer {
+  width: 20px; /* Ajustez la largeur selon vos besoins */
+  display: inline-block;
+}
+
+/* hotel.css */
+
+/* Style pour les flèches de la galerie d'hôtel */
+.arrow-style {
+cursor: pointer;
+font-size: 36px; /* Ajustez la taille selon vos besoins */
+margin: 0 10px; /* Ajustez la marge selon vos besoins */
+}
+
+/* Style pour la section de recherche */
+.search-bar {
+margin-bottom: 20px;
+}
+
+/* Style pour la section des étoiles */
+.stars-checkboxes {
+background-color: rgb(153, 26, 45);
+}
+
+/* Style pour le conteneur de l'hôtel */
+.hotel-container {
+margin-top: 20px; /* Ajustez la marge selon vos besoins */
+}
+
+/* Style pour les liens */
+.text-link {
+text-decoration: none;
+color: #007bff;
+}
+
+/* Style pour les liens au survol */
+.text-link:hover {
+color: #991a2d;
+font-weight: bold;
+}
+
+/* Style pour le texte en surbrillance */
+.text-highlight {
+color: #991a2d;
+font-weight: bold;
+}
+
+/* Ajoutez plus de styles au besoin */

@@ -10,7 +10,7 @@ const Histories=() => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
   return (
-    <div>
+    <div className='ContainerHistories'>
       <h1>Histories</h1>
       {historyCities.map(historyCities => (
             <span key={historyCities.id}>
@@ -20,6 +20,15 @@ const Histories=() => {
 
             </span>
         ))}
+                <style>
+          {
+            `
+            .ContainerHistories{
+              padding-top: 150px;
+            }
+            `
+          }
+        </style>
     </div>
   );
 }

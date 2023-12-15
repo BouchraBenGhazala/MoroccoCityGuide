@@ -1,52 +1,240 @@
-import React, { useEffect, useState } from 'react';
-const Hotels=() => {
-  const [CityHotels, setCityHotels] = useState([]);
-  useEffect(() => {
-    // Replace 'http://localhost:8080' with the actual URL of your Express API
-    fetch('http://localhost:8083/CityHotels')
-      .then(response => response.json())
-      .then(data => setCityHotels(data.CityHotels))  // Access the "stadium" array
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-  return (
-    <div>
-      <h1 className='text-center'>Our Hotels</h1>
-      <div className="background-div">
-      <p className='ml-5 mr-5 text-center'>Welcome to our exclusive selection of hotels for the 2030 World Cup in Morocco, offering a diverse experience ranging from sophisticated five-star luxury to the welcoming warmth of three-star accommodations. Whether you choose the refined elegance of our five-star hotels, the perfect harmony of comfort and convenience in our four-star establishments, or the accessible charm of our three-star options, each property embodies a commitment to excellence, authenticity, and comfort. Elegant rooms, modern facilities, strategic proximity to World Cup venues, warm hospitality, and affordable rates ensure that your stay is an unforgettable experience. We look forward to welcoming you, making your World Cup stay as memorable as the action on the field.</p>
-      </div>
-      {CityHotels.map(CityHotels => (
-          <div key={CityHotels.cityId} className='container ml-3 mr-3'>
-            <h3><p className='mr-2'>City:<a href={`http://localhost:3000/stadiums/${CityHotels.cityId}`}><span className='text-muted font-weight-bold'>{CityHotels.cityName}</span></a> |</p></h3>
-            {CityHotels.hotels.map((hotel, index) => (
-              <div key={index}>
-              <h5>{hotel.name}</h5>
-              <p>Stars: <span className='text-muted font-weight-bold'>{hotel.stars}</span></p>
-              <p>Address: <span className='text-muted font-weight-bold'>{hotel.address}</span></p>
-              <p>Amenities: <span className='text-muted font-weight-bold'>{hotel.amenities.join(', ')}</span></p>
-              <p>Average Price for 2 Persons: <span className='text-muted font-weight-bold'>{hotel.averagePriceFor2Persn}</span></p>
-              <div>
-                {hotel.photos.map((photo, photoIndex) => (
-                  <img key={photoIndex} src={photo} alt={`Hotel ${hotel.name}`} style={{ maxWidth: '100px', width: 'auto', maxHeight: '100px', height: 'auto', margin: '5px' }} />
-                ))}
-              </div>
-            </div>
-          ))}
-          
+import React, { useEffect, useState } from "react";
+import "./hotel.css";
 
-          </div>
-        ))} <br/>
+const HotelGallery = ({ photos }) => {
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
+  const handleNextClick = () => {
+    const nextIndex = (currentPhotoIndex + 1) % photos.length;
+    setCurrentPhotoIndex(nextIndex);
+  };
+
+  const handlePrevClick = () => {
+    const prevIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+    setCurrentPhotoIndex(prevIndex);
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <span onClick={handlePrevClick} style={arrowStyle}>
+        &lt;
+      </span>
+      <img
+        className="img-fluid mb-3 rounded"
+        src={photos[currentPhotoIndex]}
+        alt={`Hotel Photo ${currentPhotoIndex + 1}`}
+        style={{
+          width: "700px",
+          height: "350px",
+          margin: "5px",
+          objectFit: "cover",
+          display: "inline-block",
+        }}
+      />
+      <span onClick={handleNextClick} style={arrowStyle}>
+        &gt;
+      </span>
     </div>
   );
-}
-export default Hotels;
-/* +++ 
-                <h3 className='font-weight-bold mb-4'>{CityHotels.hotels[0].name}</h3><br/><br />
-                <div className="d-flex mb-2">
-                  <p className='mr-2'>City:<a href={`http://localhost:3000/stadiums/${CityHotels.cityId}`}><span className='text-muted font-weight-bold'>{CityHotels.cityName}</span></a> |</p>
-                  <p className='mr-2'>address: <span className='text-muted font-weight-bold'>{CityHotels.hotels[0].address}</span>  |</p>
-                  
-                  <p>averagePriceFor2Persn: <span className='text-muted font-weight-bold'>{CityHotels.hotels[0].averagePriceFor2Persn}</span></p>
+};
+
+// Style pour les flèches
+const arrowStyle = {
+  cursor: "pointer",
+  fontSize: "36px", // Ajustez la taille selon vos besoins
+  margin: "0 10px", // Ajustez la marge selon vos besoins
+};
+
+const Hotels = () => {
+  const [cityHotels, setCityHotels] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [cityOptions, setCityOptions] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedStars, setSelectedStars] = useState([]);
+  const [filteredHotels, setFilteredHotels] = useState([]);
+
+  useEffect(() => {
+    // Replace 'http://localhost:8080' with the actual URL of your Express API
+    fetch("http://localhost:8083/CityHotels")
+      .then((response) => response.json())
+      .then((data) => {
+        setCityHotels(data.CityHotels);
+        // Extract city names for dropdown options
+        const cities = data.CityHotels.map((city) => city.cityName);
+        setCityOptions(cities);
+        // Set filtered hotels initially to all hotels
+        setFilteredHotels(data.CityHotels);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const handleCityChange = (e) => {
+    const cityValue = e.target.value;
+    setSelectedCity(cityValue);
+    filterHotels(cityValue, selectedStars);
+  };
+
+  const handleStarsChange = (e) => {
+    const starValue = e.target.value;
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      const updatedStars = [...selectedStars, starValue];
+      setSelectedStars(updatedStars);
+      filterHotels(selectedCity, updatedStars);
+    } else {
+      const updatedStars = selectedStars.filter((star) => star !== starValue);
+      setSelectedStars(updatedStars);
+      filterHotels(selectedCity, updatedStars);
+    }
+  };
+
+  const filterHotels = (cityName, stars) => {
+    const filteredCityHotels = cityHotels.map((city) => {
+      const cityMatches = city.cityName
+        .toLowerCase()
+        .includes(cityName.toLowerCase());
+      const filteredHotels = cityMatches
+        ? city.hotels.filter(
+            (hotel) =>
+              stars.length === 0 || stars.includes(hotel.stars.toString())
+          )
+        : [];
+
+      return {
+        ...city,
+        hotels: filteredHotels,
+      };
+    });
+
+    setFilteredHotels(filteredCityHotels);
+  };
+
+  return (
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <div style={{ marginTop: "120px" }}>
+        <h1 className="text-center mb-4 mt-4">Welcome To Our Hotels</h1>
+        <div className="background-div">
+          <div style={{ marginTop: "30px" }}>
+            <p className="ml-5 mr-5 text-center">
+              Welcome to our exclusive selection of hotels for the 2030 World
+              Cup in Morocco, offering a diverse experience ranging from
+              sophisticated five-star luxury to the welcoming warmth of
+              three-star accommodations. Whether you choose the refined elegance
+              of our five-star hotels, the perfect harmony of comfort and
+              convenience in our four-star establishments, or the accessible
+              charm of our three-star options, each property embodies a
+              commitment to excellence, authenticity, and comfort. Elegant
+              rooms, modern facilities, strategic proximity to World Cup venues,
+              warm hospitality, and affordable rates ensure that your stay is an
+              unforgettable experience. We look forward to welcoming you, making
+              your World Cup stay as memorable as the action on the field.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="search-bar" style={{ marginBottom: "20px" }}>
+        <input
+          type="text"
+          placeholder="Search by City Name"
+          value={selectedCity}
+          onChange={handleCityChange}
+          list="cityOptions"
+        />
+        {cityOptions.length > 0 && (
+          <datalist id="cityOptions">
+            {cityOptions.map((city, index) => (
+              <option key={index} value={city} />
+            ))}
+          </datalist>
+        )}
+      </div>
+      <div
+        className="stars-checkboxes"
+        style={{ backgroundColor: "rgb(153,26,45)" }}
+      >
+        <p className="text-center rounded">Select Stars</p>
+        {[3, 4, 5].map((star) => (
+          <label key={star}>
+            <input
+              type="checkbox"
+              value={star}
+              checked={selectedStars.includes(star.toString())}
+              onChange={handleStarsChange}
+            />
+            &nbsp;
+            {star} Stars&nbsp;&nbsp;&nbsp;&nbsp;
+          </label>
+        ))}
+      </div>
+      {filteredHotels
+        .filter(
+          (city) => city.cityName.toLowerCase() === selectedCity.toLowerCase()
+        )
+        .map((city) => (
+          <div key={city.cityId} className="container ml-3 mr-3">
+            <h3>
+              <p className="mr-2">
+                City:
+                <a href={`http://localhost:3000/stadiums/${city.cityId}`}>
+                  <span className="text-muted font-weight-bold">
+                    {city.cityName}
+                  </span>
+                </a>{" "}
+              </p>
+            </h3>
+            {city.hotels.map((hotel, index) => (
+              <div key={index} className="hotel-container">
+                <h5>{hotel.name}</h5>
+                <br />
+                <div className="hotel-details">
+                <p>
+                  Address:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.address}
+                    </span>
+                  </p>
+                  <p>
+                  Stars:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.stars}
+                    </span>
+                  </p>
                 </div>
-                <a href={`http://localhost:3000/stadiums/${CityHotels.cityId}`}>
-                <img src={CityHotels.hotels[0].photos} alt={CityHotels.hotels[0].name} width="800" height="400" className="img-fluid mb-5 rounded"/>    
-                </a>*/
+                <div className="hotel-photos">
+                  {/* Utilisez le composant HotelGallery pour afficher les images */}
+                  <HotelGallery photos={hotel.photos} />
+                </div>
+                <div className="hotel-details">
+                  <p>
+                    Amenities:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.amenities.join(", ")}
+                    </span>
+                  </p>
+                  <p>
+                    Average Price for 2 Persons:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.averagePriceFor2Persn}
+                    </span>
+                  </p>
+                </div>
+                <br /><br /><br /><br />
+              </div>
+            ))}
+          </div>
+        ))}
+    </div>
+  );
+};
+
+export default Hotels;
