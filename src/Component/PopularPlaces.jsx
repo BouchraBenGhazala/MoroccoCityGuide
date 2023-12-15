@@ -10,7 +10,7 @@ const PopularPlaces=() => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);  
   return (
-    <div>
+    <div className='ContainerPlaces'>
       <h1>Places</h1>
       {popularPlaces.map(popularPlace => (
           <div key={popularPlace.city}>
@@ -26,7 +26,17 @@ const PopularPlaces=() => {
             ))}
             <br />
           </div>
+          
         ))}
+        <style>
+        {
+            `
+            .ContainerPlaces{
+              padding-top: 150px;
+            }
+            `
+          }
+        </style>
     </div>
   );
 }
