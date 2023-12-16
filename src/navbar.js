@@ -86,18 +86,19 @@ const Navbar = () => {
                     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
                     @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
                     .custom-green-bg {
-                      background-color: #781322; /* Your preferred shade of green */
+                      background-color: #991a2d; /* Your preferred shade of green */
                       padding-top: 0px; /* Adjust the top padding as needed */
                       padding-bottom: 0px; /* Adjust the bottom padding as needed */
+                      color:rgba(240,235,229,255);
                     }
                     .custom-green-bg2 {
-                      background-color: #991a2d; /* Your preferred shade of green */
+                      background-color: ; /* Your preferred shade of green */
                       padding-top: 0px; /* Adjust the top padding as needed */
                       padding-bottom: 0px; /* Adjust the bottom padding as needed */
                       
                     }
                     .nav-link{
-                      color: rgba(240,235,229,255);
+                      color: white;
                       font-weight: bold;
                       margin-left:35px;
                       margin-top:30px;
@@ -105,7 +106,6 @@ const Navbar = () => {
                     }
                     .nav-link:hover{
                       color:red;
-                      text-decoration:underline;
                     }
                     .nav-link.active{
                       color:red;

@@ -3,6 +3,7 @@ import ball from '../pubsImages/ball football.jpg';
 import tshirt from '../pubsImages/maroc tshirt.jpeg';
 import flag from '../pubsImages/Morocco flag.png';
 import casquette from '../pubsImages/moroccan casquette.jpg';
+import { Link } from 'react-router-dom';
 
 const StadiumList = () => {
   const [stadiums, setStadiums] = useState([]);
@@ -16,7 +17,7 @@ const StadiumList = () => {
 
   return (
     <div className='ContainerStadium'>
-      <h1 className='text-center mb-4 mt-4'>Moroccan's Popular Stadiums</h1>
+      <h1 className='text-center mb-4 beautiful-title mt-4'>Moroccan's Popular Stadiums</h1>
       <div className="background-div p-4">
         <p className='ml-3 mr-3'>In a historic moment for Moroccan football, the nation is set to play host to the FIFA World Cup in 2030 across six distinguished stadiums.
           <br />These venues, strategically chosen to showcase the country's passion for the sport, are poised to become the epicenter of global footballing fervor. <br />
@@ -31,31 +32,23 @@ const StadiumList = () => {
             {stadiums.map(stadium => (
               <div key={stadium.id} className='container ml-lg-3 mr-lg-3 mb-5'>
                 <div className='row'>
-                  <h2 className='font-weight-bold mb-2'>{stadium.name}</h2>
+                  <h2 className='font-weight-bold beautiful-subtitle mb-2'>{stadium.name}</h2>
                   <div className="d-flex mb-1">
-                    <p className='mr-2'><a href={`http://localhost:3000/stadiums/${stadium.id}`}><span className='red-color'>{stadium.formerName.join(', ')}</span></a></p>
+                    <p className='mr-2'><Link to={`/stadiums/${stadium.id}`}><span className='red-color'>{stadium.formerName.join(', ')}</span></Link></p>
                     <p className='mr-2'>Capacity: <span className='field-color font-weight-bold'>{stadium.capacity}</span> seats </p>
                     <p className='mr-2'>Owner: <span className='field-color font-weight-bold'>{stadium.owner}</span> </p>
                     <p>Surface: <span className='field-color font-weight-bold'>{stadium.field.surface}</span></p>
                   </div>
-                  <a href={`http://localhost:3000/stadiums/${stadium.id}`} className="image-container">
+                  <Link to={`/stadiums/${stadium.id}`} className="image-container">
                     <img src={stadium.image} alt={stadium.name} className="img-fluid mb-3 rounded" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
 
           <div className='col-lg-3 ml-lg-4 bg-COLOR w-100'>
-            <div className="card text-center mb-3 mt-3">
-              <img src={ball} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
-              <div className="card-body">
-                <h5 className="card-title text-success">YANYODO Kid's Soccer Ball Mini Ball</h5>
-                <p className="card-text">The soccer ball is portable & lightweight for easy carry and go. Ideal for indoor, outdoor, playground playing, etc.</p>
-                <a href="https://www.amazon.ae/YANYODO-Durable-Training-Soccer-Toddlers/dp/B07PQPBF56?th=1" target='_blank' className="btn btn-success">Buy now</a>
-              </div>
-            </div>
-            <div className="card text-center mb-3 mt-3">
+            <div className="card  floating-card text-center mb-3 mt-3">
               <img src={tshirt} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
               <div className="card-body">
                 <h5 className="card-title text-success">Moroccan t-shirt</h5>
@@ -63,7 +56,15 @@ const StadiumList = () => {
                 <a href="https://wanglikear.live/product_details/62837804.html" target='_blank' className="btn btn-success">Buy now</a>
               </div>
             </div>
-            <div className="card text-center mb-3 mt-3">
+            <div className="card floating-card text-center mb-3 mt-3">
+              <img src={ball} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
+              <div className="card-body">
+                <h5 className="card-title text-success">YANYODO Kid's Soccer Ball Mini Ball</h5>
+                <p className="card-text">The soccer ball is portable & lightweight for easy carry and go. Ideal for indoor, outdoor, playground playing, etc.</p>
+                <a href="https://www.amazon.ae/YANYODO-Durable-Training-Soccer-Toddlers/dp/B07PQPBF56?th=1" target='_blank' className="btn btn-success">Buy now</a>
+              </div>
+            </div>
+            <div className="card floating-card text-center mb-3 mt-3">
               <img src={flag} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
               <div className="card-body">
                 <h5 className="card-title text-success">Moroccan flag</h5>
@@ -71,7 +72,7 @@ const StadiumList = () => {
                 <a href="https://seekflag.com/flag-of-morocco/" target='_blank' className="btn btn-success">Buy now</a>
               </div>
             </div>
-            <div className="card text-center mb-3 mt-3">
+            <div className="card floating-card text-center mb-3 mt-3">
               <img src={casquette} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
               <div className="card-body">
                 <h5 className="card-title text-success">Moroccan casquette</h5>
@@ -84,6 +85,7 @@ const StadiumList = () => {
       </div>
       <style>
         {`
+          @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
           /* StadiumList.css */
           .background-div {
             background-color: #f2f5f8;
@@ -95,7 +97,21 @@ const StadiumList = () => {
             text-decoration: none;
             color: #007bff;
           }
-
+          .beautiful-title {
+            font-family: 'Amiri', sans-serif;
+            color: #991a2d; /* Your preferred text color */
+            font-size: 2.5rem; /* Adjust the font size as needed */
+            text-transform: uppercase;
+            letter-spacing: 2px; /* Adjust the letter spacing as needed */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle text shadow */
+            margin-bottom: 20px; /* Adjust the margin as needed */
+          }
+          .beautiful-subtitle {
+            font-family: 'Amiri', sans-serif;
+            color: #991a2d; /* Your preferred text color */
+            font-size: 1.8rem; /* Adjust the font size as needed */
+            margin-bottom: 10px; /* Adjust the margin as needed */
+          }
           .card {
             width: 100%;
             border-radius: 8px;
@@ -120,7 +136,7 @@ const StadiumList = () => {
 
           .ContainerStadium {
             padding-top: 100px;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Amiri', sans-serif;
             background-color: rgba(240,235,229,255); 
           }
 
@@ -140,6 +156,17 @@ const StadiumList = () => {
           a:hover{
             color:#991a2d;
             font-weight:bold;
+          }
+          @keyframes floatAnimation {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+          .floating-card {
+            animation: floatAnimation 3s infinite ease-in-out; /* Adjust the duration as needed */
           }
           /* Add more styles as needed */
         `}

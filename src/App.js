@@ -8,6 +8,7 @@ import Hotels from './Component/Hotels';
 import Traditions from './Component/Traditions';
 import PopularPlaces from './Component/PopularPlaces';
 import Navbar from './navbar';
+import StadiumDetails from './Component/StadiumDetails';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/traditions" element={<Traditions />} />
           <Route path="/popular-places" element={<PopularPlaces />} />
+          <Route path="/stadiums/:id" element={<StadiumDetails/>} />
         </Routes>
       </div>
     </Router>
