@@ -1,7 +1,7 @@
 // Navbar.js
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import logo from './Images/logo.png';
+import logo from './Images/jj.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -57,8 +57,13 @@ const Navbar = () => {
                           Histories
                         </NavLink>
                       </li>
+                      <li className="nav-item mr-5">
+                        <NavLink to="/histories" className="nav-link ">
+                          
+                        </NavLink>
+                      </li>
                       <li>
-                      <NavLink to="/" className="navbar-brand"><img src={logo} alt="Logo" className="logo mr-5" width="90" /></NavLink>
+                      <NavLink to="/" className="navbar-brand"><img src={logo} alt="Logo" className="logo mr-5" width="120" /></NavLink>
 
                       </li>
 
