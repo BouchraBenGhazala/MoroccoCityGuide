@@ -57,13 +57,8 @@ const Navbar = () => {
                           Histories
                         </NavLink>
                       </li>
-                      <li className="nav-item mr-5">
-                        <NavLink to="/histories" className="nav-link ">
-                          
-                        </NavLink>
-                      </li>
                       <li>
-                      <NavLink to="/" className="navbar-brand"><img src={logo} alt="Logo" className="logo mr-5" width="120" /></NavLink>
+                      <NavLink to="/" className="navbar-brand"><img src={logo} alt="Logo" className="logo mr-5" width="100" /></NavLink>
 
                       </li>
 

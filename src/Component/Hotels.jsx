@@ -20,6 +20,7 @@ const HotelGallery = ({ photos }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        
       }}
     >
       <span onClick={handlePrevClick} style={arrowStyle}>
@@ -118,13 +119,13 @@ const Hotels = () => {
 
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center",backgroundColor:"rgb(240,235,229,255)",paddingBottom: "80px"}}
     >
       <div style={{ marginTop: "120px" }}>
-        <h1 className="text-center mb-4 mt-4">Welcome To Our Hotels</h1>
+        <h1 className="text-center mb-4 mt-4 beautiful-title">Welcome To Our Hotels</h1>
         <div className="background-div">
           <div style={{ marginTop: "30px" }}>
-            <p className="ml-5 mr-5 text-center">
+            <p className="ml-5 mr-5 text-center text-hotels">
               Welcome to our exclusive selection of hotels for the 2030 World
               Cup in Morocco, offering a diverse experience ranging from
               sophisticated five-star luxury to the welcoming warmth of
@@ -149,6 +150,13 @@ const Hotels = () => {
           value={selectedCity}
           onChange={handleCityChange}
           list="cityOptions"
+          style={{
+            padding: "10px", // Adjust the padding as needed
+            fontSize: "16px", // Adjust the font size as needed
+            border: "1px solid #ccc", // Adjust the border as needed
+            borderRadius: "5px", // Adjust the border radius as needed
+            // Add any additional styles here
+          }}
         />
         {cityOptions.length > 0 && (
           <datalist id="cityOptions">
@@ -160,7 +168,12 @@ const Hotels = () => {
       </div>
       <div
         className="stars-checkboxes"
-        style={{ backgroundColor: "rgb(153,26,45)" }}
+        style={{
+          backgroundColor: "rgb(153, 26, 45)",
+          padding: "10px", // Adjust the padding as needed
+          borderRadius: "8px", // Adjust the border radius as needed
+          color: "#fff", // Adjust the text color as needed
+        }}
       >
         <p className="text-center rounded">Select Stars</p>
         {[3, 4, 5].map((star) => (
@@ -236,6 +249,27 @@ const Hotels = () => {
             ))}
           </div>
         ))}
+        <style>
+          {
+            `
+            @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
+            .beautiful-title {
+              font-family: 'Amiri', sans-serif;
+              color: #991a2d; /* Your preferred text color */
+              font-size: 2.5rem; /* Adjust the font size as needed */
+              text-transform: uppercase;
+              letter-spacing: 2px; /* Adjust the letter spacing as needed */
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle text shadow */
+              margin-bottom: 20px; /* Adjust the margin as needed */
+            }
+            .text-hotels{
+              font-family: 'Amiri', sans-serif;
+            }
+            
+            `
+
+          }
+        </style>
     </div>
   );
 };
