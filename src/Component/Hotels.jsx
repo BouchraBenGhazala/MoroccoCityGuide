@@ -117,23 +117,125 @@ const Hotels = () => {
   };
 
   return (
-    <div>
-      <h1>Hotels</h1>
-      {CityHotels.map(hotel => (
-          <span key={hotel.cityId}>
-            {hotel.cityName}<br/>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <div style={{ marginTop: "120px" }}>
+        <h1 className="text-center mb-4 mt-4">Welcome To Our Hotels</h1>
+        <div className="background-div">
+          <div style={{ marginTop: "30px" }}>
+            <p className="ml-5 mr-5 text-center">
+              Welcome to our exclusive selection of hotels for the 2030 World
+              Cup in Morocco, offering a diverse experience ranging from
+              sophisticated five-star luxury to the welcoming warmth of
+              three-star accommodations. Whether you choose the refined elegance
+              of our five-star hotels, the perfect harmony of comfort and
+              convenience in our four-star establishments, or the accessible
+              charm of our three-star options, each property embodies a
+              commitment to excellence, authenticity, and comfort. Elegant
+              rooms, modern facilities, strategic proximity to World Cup venues,
+              warm hospitality, and affordable rates ensure that your stay is an
+              unforgettable experience. We look forward to welcoming you, making
+              your World Cup stay as memorable as the action on the field.
+            </p>
+          </div>
+        </div>
+      </div>
 
-          </span>
-        ))} <br/>
-                <style>
-          {
-            `
-            .ContainerTraditions{
-              padding-top: 150px;
-            }
-            `
-          }
-        </style>
+      <div className="search-bar" style={{ marginBottom: "20px" }}>
+        <input
+          type="text"
+          placeholder="Search by City Name"
+          value={selectedCity}
+          onChange={handleCityChange}
+          list="cityOptions"
+        />
+        {cityOptions.length > 0 && (
+          <datalist id="cityOptions">
+            {cityOptions.map((city, index) => (
+              <option key={index} value={city} />
+            ))}
+          </datalist>
+        )}
+      </div>
+      <div
+        className="stars-checkboxes"
+        style={{ backgroundColor: "rgb(153,26,45)" }}
+      >
+        <p className="text-center rounded">Select Stars</p>
+        {[3, 4, 5].map((star) => (
+          <label key={star}>
+            <input
+              type="checkbox"
+              value={star}
+              checked={selectedStars.includes(star.toString())}
+              onChange={handleStarsChange}
+            />
+            &nbsp;
+            {star} Stars&nbsp;&nbsp;&nbsp;&nbsp;
+          </label>
+        ))}
+      </div>
+      {filteredHotels
+        .filter(
+          (city) => city.cityName.toLowerCase() === selectedCity.toLowerCase()
+        )
+        .map((city) => (
+          <div key={city.cityId} className="container ml-3 mr-3">
+            <h3>
+              <p className="mr-2">
+                City:
+                <a href={`http://localhost:3000/stadiums/${city.cityId}`}>
+                  <span className="text-muted font-weight-bold">
+                    {city.cityName}
+                  </span>
+                </a>{" "}
+              </p>
+            </h3>
+            {city.hotels.map((hotel, index) => (
+              <div key={index} className="hotel-container">
+                <h5>{hotel.name}</h5>
+                <br />
+                <div className="hotel-details">
+                  <p>
+                    Address:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.address}
+                    </span>
+                  </p>
+                  <p>
+                    Stars:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.stars}
+                    </span>
+                  </p>
+                </div>
+                <div className="hotel-photos">
+                  {/* Utilisez le composant HotelGallery pour afficher les images */}
+                  <HotelGallery photos={hotel.photos} />
+                </div>
+                <div className="hotel-details">
+                  <p>
+                    Amenities:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.amenities.join(", ")}
+                    </span>
+                  </p>
+                  <p>
+                    Average Price for 2 Persons:{" "}
+                    <span className="text-muted font-weight-bold">
+                      {hotel.averagePriceFor2Persn}
+                    </span>
+                  </p>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+              </div>
+            ))}
+          </div>
+        ))}
     </div>
   );
 };
