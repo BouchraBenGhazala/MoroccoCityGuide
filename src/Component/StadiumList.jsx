@@ -4,6 +4,7 @@ import tshirt from '../pubsImages/maroc tshirt.jpeg';
 import flag from '../pubsImages/Morocco flag.png';
 import casquette from '../pubsImages/moroccan casquette.jpg';
 import { Link } from 'react-router-dom';
+import Footer from '../footer';
 
 const StadiumList = () => {
   const [stadiums, setStadiums] = useState([]);
@@ -83,6 +84,7 @@ const StadiumList = () => {
           </div>
         </div>
       </div>
+      <Footer/>
       <style>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');

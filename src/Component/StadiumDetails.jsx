@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import footBG from '../pubsImages/bg4.jpg';
+import video from "../StadiumVideos/Agadir Stadium.mp4";
 const StadiumDetails = () => {
     const [stadium, setStadium] = useState(null);
     const [showMaps, setShowMaps] = useState(false); // Add this state
@@ -34,8 +35,11 @@ const StadiumDetails = () => {
       </header>
 
       <div className="content">
-        <img src={stadium.image} alt={stadium.name} className="stadium-image" />
-
+        {/* <img src={stadium.image} alt={stadium.name} className="stadium-image" /> */}
+        <video width="770" height="360" controls autoplay>
+              <source src={video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>  
         <section className="description">
           <h3>Description:</h3>
           <p>{stadium.description}</p>
@@ -105,7 +109,8 @@ const StadiumDetails = () => {
             font-family: 'Amiri', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #991a2d;
+            background-image: url(${footBG});
+            background-size: cover; 
             color: #333;
           }
 
