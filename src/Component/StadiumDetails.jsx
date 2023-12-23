@@ -6,13 +6,16 @@ const StadiumDetails = () => {
     const [stadium, setStadium] = useState(null);
     const [showMaps, setShowMaps] = useState(false); // Add this state
     const { id: stadiumId } = useParams();
+    const [dynamicVideo, setDynamicVideo] = useState(null);
 
+
+    
   useEffect(() => {
     if (!stadiumId) {
       // Handle the case where the stadiumId is not present
       return;
     }
-
+   
     // Fetch the stadium data based on the ID
     fetch(`http://localhost:8083/stadium`)
       .then(response => response.json())
@@ -20,13 +23,20 @@ const StadiumDetails = () => {
         // Find the stadium with the matching ID
         const selectedStadium = data.stadium.find(stadium => stadium.id.toString() === stadiumId);
         setStadium(selectedStadium);
+
+        // Dynamically import the video
+        import(`../StadiumVideos/${selectedStadium.video}`)
+          .then(videoModule => {
+            setDynamicVideo(videoModule.default);
+          })
+          .catch(error => console.error('Error loading video:', error));
       })
       .catch(error => console.error('Error fetching data:', error));
-  }, [stadiumId]);
+        }, [stadiumId]);
 
-  if (!stadium) {
-    return <div className="loading">Loading...</div>;
-  }
+        if (!stadium ) {
+          return <div className="loading">Loading...</div>;
+        }
 
   return (
     <div className="container">
@@ -36,10 +46,11 @@ const StadiumDetails = () => {
 
       <div className="content">
         {/* <img src={stadium.image} alt={stadium.name} className="stadium-image" /> */}
-        <video width="770" height="360" controls autoplay>
-              <source src={video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>  
+        <video width="770" height="360" controls autoPlay>
+          <source src={dynamicVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
         <section className="description">
           <h3>Description:</h3>
           <p>{stadium.description}</p>
@@ -121,7 +132,8 @@ const StadiumDetails = () => {
             margin: 0 auto;
             padding-left: 20px;
             padding-right: 20px;
-            background-color: rgba(240,235,229,255);
+            //background-color: rgba(240,235,229,255);
+            background-color:#d9ac30;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             margin-top: 150px;

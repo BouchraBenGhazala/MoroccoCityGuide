@@ -1,16 +1,12 @@
 import React from 'react';
 import footerBG from './Images/patterns-temoignage.png';
 
-const Footer = () => {
+const Banding = () => {
   return (
     <footer className="footer">
       <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
-            <p className="footer-text">
-              © 2023 MoroccanCityGuide.<br/>
-              Bouchra BENGHAZALA - Oussama FECHTALI
-            </p>
           </div>
         </div>
       </div>
@@ -20,9 +16,7 @@ const Footer = () => {
             background-image: url(${footerBG});
             background-size: cover; 
             padding: 20px 0;
-            color: white;
-            font-family: 'Amiri', sans-serif;
-            font-weight:bold;
+
           }
 
           .footer-text {
@@ -34,4 +28,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Banding;
