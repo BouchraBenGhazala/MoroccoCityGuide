@@ -43,7 +43,7 @@ const Navbar = () => {
                   >
                     <ul className="navbar-nav mx-auto h4 ">
                       <li className="nav-item mr-4">
-                        <NavLink to="/" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
+                        <NavLink to="/"  className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
                           Home
                         </NavLink>
                       </li>
@@ -113,10 +113,10 @@ const Navbar = () => {
                       color:red;
                       font-size:25px;
                     }
+                   
                     .nav-link.active{
                       color:red;
-                      
-                    }
+                  }
                     .navbar{
                       font-family: 'Amiri', sans-serif;
                       

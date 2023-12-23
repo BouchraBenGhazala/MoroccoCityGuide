@@ -53,7 +53,7 @@ const StadiumList = () => {
             ))}
           </div>
 
-          <div className='col-lg-3 ml-lg-4 bg-COLOR w-100'>
+          <div className='col-lg-3 ml-lg-4 bg-COLOR'>
             <div className="card  floating-card text-center mb-3 mt-3">
               <img src={tshirt} className="card-img-top w-50 mx-auto pt-2" alt="ball" />
               <div className="card-body">
