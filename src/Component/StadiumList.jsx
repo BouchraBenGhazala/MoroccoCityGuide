@@ -5,6 +5,7 @@ import flag from '../pubsImages/Morocco flag.png';
 import casquette from '../pubsImages/moroccan casquette.jpg';
 import { Link } from 'react-router-dom';
 import Footer from '../footer';
+import homeBG from "../pubsImages/bg2.avif";
 
 const StadiumList = () => {
   const [stadiums, setStadiums] = useState([]);
@@ -17,7 +18,11 @@ const StadiumList = () => {
   }, []);
 
   return (
+   
     <div className='ContainerStadium'>
+      <div className='headStadiums'>
+  
+      </div>
       <h1 className='text-center mb-4 beautiful-title mt-4'>Moroccan's Popular Stadiums</h1>
       <div className="background-div p-4">
         <p className='ml-3 mr-3'>In a historic moment for Moroccan football, the nation is set to play host to the FIFA World Cup in 2030 across six distinguished stadiums.
@@ -39,12 +44,12 @@ const StadiumList = () => {
                     <p className='mr-2'>Capacity: <span className='field-color font-weight-bold'>{stadium.capacity}</span> seats </p>
                     <p className='mr-2'>Owner: <span className='field-color font-weight-bold'>{stadium.owner}</span> </p>
                     <p>Surface: <span className='field-color font-weight-bold'>{stadium.field.surface}</span></p>
-                  </div>
-                  <Link to={`/stadiums/${stadium.id}`} className="image-container">
+                  </div> 
+                  <Link to={`/stadiums/${stadium.id}`} className="image-container"> 
                     <img src={stadium.image} alt={stadium.name} className="img-fluid mb-3 rounded" />
                   </Link>
                 </div>
-              </div>
+              </div> 
             ))}
           </div>
 
@@ -90,11 +95,23 @@ const StadiumList = () => {
           @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
           /* StadiumList.css */
           .background-div {
-            background-color: #f2f5f8;
+            background-color: #991a2d;
             padding: 20px;
             margin: 20px;
+            color:white;
+            filter: brightness(90%);
+            opacity: 0.9;
+            
           }
-
+          .background-div:hover{
+            filter: brightness(100%);
+            opacity: 1;
+          }
+          .headStadiums{
+            background-image: url(${homeBG});
+            background-size: cover; 
+            padding-top:560px;
+          }
           a {
             text-decoration: none;
             color: #007bff;
@@ -123,7 +140,7 @@ const StadiumList = () => {
             position: relative;
             overflow: hidden;
             width: 100%;
-            border-radius: 8px;
+            https://www.visitmorocco.com/en/discover-morocco/dynastic-history-of-morocco
           }
 
           .image-container img {
@@ -134,12 +151,14 @@ const StadiumList = () => {
 
           .image-container:hover img {
             transform: scale(1.2);
+           
           }
+        
 
-          .ContainerStadium {
-            padding-top: 100px;
+          .ContainerStadium {  
             font-family: 'Amiri', sans-serif;
-            background-color: rgba(240,235,229,255); 
+            //background-color: rgba(240,235,229,255); 
+            background-color:#d9ac30;
           }
 
           .bg-COLOR {
