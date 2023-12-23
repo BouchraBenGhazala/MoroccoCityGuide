@@ -1,73 +1,127 @@
-/* Add this to your CSS */
+/* hotel.css */
+
+/* Style pour les flèches de la galerie d'hôtel */
+.arrow-style {
+  cursor: pointer;
+  font-size: 36px; /* Ajustez la taille selon vos besoins */
+  margin: 0 10px; /* Ajustez la marge selon vos besoins */
+}
+
+/* Style pour la section de recherche */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+/* Style pour la section des étoiles */
+.stars-checkboxes {
+  background-color: rgb(153, 26, 45);
+}
+
+/* Style pour le conteneur de l'hôtel */
 .hotel-container {
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Ajustez la marge selon vos besoins */
 }
 
+/* Style pour le conteneur de la carte d'hôtel */
+.hotel-card {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Style pour la section des photos d'hôtel */
 .hotel-photos {
-margin-top: 10px; /* Adjust margin as needed */
-text-align: center;
+  flex: 1;
+  margin-right: 20px; /* Ajustez la marge entre les photos et les détails */
 }
 
+/* Style pour la section des détails d'hôtel */
 .hotel-details {
-display: flex;
-justify-content: space-between;
-width: 100%;
-margin-top: 10px; /* Adjust margin as needed */
+  flex: 2;
+  padding: 0 10px;
 }
 
+/* Style pour chaque information dans une ligne */
 .hotel-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px; /* Ajoutez une marge en bas pour séparer les éléments */
 }
 
+/* Ajoutez une marge en bas pour séparer les éléments */
 .spacer {
-  width: 20px; /* Ajustez la largeur selon vos besoins */
-  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-/* hotel.css */
-
-/* Style pour les flèches de la galerie d'hôtel */
-.arrow-style {
-cursor: pointer;
-font-size: 36px; /* Ajustez la taille selon vos besoins */
-margin: 0 10px; /* Ajustez la marge selon vos besoins */
+/* Style pour le titre des hôtels */
+.hotel-details h5 {
+  font-family: 'Amiri', sans-serif;
+  color: #991a2d;
+  font-size: 1.5rem; /* Ajustez la taille selon vos besoins */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px; /* Ajustez la marge en bas selon vos besoins */
 }
 
-/* Style pour la section de recherche */
+/* Style pour chaque information dans une ligne avec un interligne augmenté */
+.hotel-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Augmentez la marge en bas selon vos besoins */
+}
+
+/* Style pour les liens au survol dans les informations de l'hôtel */
+.hotel-info a:hover {
+  color: #991a2d;
+  font-weight: bold;
+}
+
+/* Style pour le texte en surbrillance dans les informations de l'hôtel */
+.hotel-info .text-highlight {
+  color: #991a2d;
+  font-weight: bold;
+  margin-bottom: 5px; /* Ajustez la marge en bas selon vos besoins */
+}
+
+/* Style pour la barre de recherche de la ville */
 .search-bar {
-margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-/* Style pour la section des étoiles */
-.stars-checkboxes {
-background-color: rgb(153, 26, 45);
+/* Style pour le champ de recherche */
+.search-bar input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  margin-right: 10px;
 }
 
-/* Style pour le conteneur de l'hôtel */
-.hotel-container {
-margin-top: 20px; /* Ajustez la marge selon vos besoins */
+/* Style pour la liste déroulante des options de la ville */
+datalist {
+  display: none;
 }
 
-/* Style pour les liens */
-.text-link {
-text-decoration: none;
-color: #007bff;
+/* Style pour le bouton de recherche (facultatif) */
+.search-bar button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* Style pour les liens au survol */
-.text-link:hover {
-color: #991a2d;
-font-weight: bold;
+.search-bar button:hover {
+  background-color: #0056b3;
 }
-
-/* Style pour le texte en surbrillance */
-.text-highlight {
-color: #991a2d;
-font-weight: bold;
-}
-
-/* Ajoutez plus de styles au besoin */

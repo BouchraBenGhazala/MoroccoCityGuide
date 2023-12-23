@@ -1,8 +1,31 @@
+// Importations
 import React, { useEffect, useState } from "react";
+import { Modal, Carousel } from "react-bootstrap";
 import "./hotel.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
+// ... (importations)
+
+// Composant HotelGallery pour afficher les images
 const HotelGallery = ({ photos }) => {
+  const [showModal, setShowModal] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
+  useEffect(() => {
+    // Préchargez toutes les images en arrière-plan
+    photos.forEach((photo) => {
+      const img = new Image();
+      img.src = photo;
+    });
+  }, [photos]);
+
+  const handleModalClose = () => setShowModal(false);
+  const handleModalShow = () => setShowModal(true);
 
   const handleNextClick = () => {
     const nextIndex = (currentPhotoIndex + 1) % photos.length;
@@ -15,44 +38,115 @@ const HotelGallery = ({ photos }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        
-      }}
-    >
-      <span onClick={handlePrevClick} style={arrowStyle}>
-        &lt;
-      </span>
+    <>
       <img
         className="img-fluid mb-3 rounded"
-        src={photos[currentPhotoIndex]}
-        alt={`Hotel Photo ${currentPhotoIndex + 1}`}
+        src={photos[0]}
+        alt={`Hotel Photo ${1}`}
         style={{
           width: "700px",
           height: "350px",
           margin: "5px",
           objectFit: "cover",
           display: "inline-block",
+          cursor: "pointer",
         }}
+        onClick={handleModalShow}
       />
-      <span onClick={handleNextClick} style={arrowStyle}>
-        &gt;
-      </span>
-    </div>
+
+      <Modal show={showModal} onHide={handleModalClose} centered size="lg">
+        <Modal.Body>
+          <Carousel
+            activeIndex={currentPhotoIndex}
+            onSelect={(index) => setCurrentPhotoIndex(index)}
+          >
+            {photos.map((photo, index) => (
+              <Carousel.Item key={index}>
+                <img
+                  className="d-block w-100"
+                  src={photo}
+                  alt={`Hotel Photo ${index + 1}`}
+                  style={{
+                    width: "700px",
+                    height: "400px",
+                    objectFit: "cover",
+                  }}
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </Modal.Body>
+        <Modal.Footer>
+          <FontAwesomeIcon
+            icon={faStar}
+            style={{ color: "#FFD700", cursor: "pointer" }}
+            onClick={handlePrevClick}
+          />
+          <Modal.Title>Photo {currentPhotoIndex + 1}</Modal.Title>
+          <FontAwesomeIcon
+            icon={faStar}
+            style={{ color: "#FFD700", cursor: "pointer" }}
+            onClick={handleNextClick}
+          />
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
 // Style pour les flèches
 const arrowStyle = {
   cursor: "pointer",
-  fontSize: "36px", // Ajustez la taille selon vos besoins
-  margin: "0 10px", // Ajustez la marge selon vos besoins
+  fontSize: "36px",
+  margin: "0 10px",
 };
 
+// Composant HotelCard pour représenter chaque hôtel
+const HotelCard = ({ hotel }) => (
+  <div className="hotel-card">
+    <div className="hotel-photos">
+      {/* Utilisez le composant HotelGallery pour afficher les images */}
+      <HotelGallery photos={hotel.photos} />
+    </div>
+    <div className="hotel-details">
+      <h5 className="hotel-title" style={{ marginTop: "40px" }}>
+        {hotel.name}
+      </h5>
+      <p style={{ margin: "25px 0" }}>
+        <FontAwesomeIcon icon={faMapMarkerAlt} style={{ marginRight: "5px" }} />
+        <span className="text-muted font-weight-bold">{hotel.address}</span>
+      </p>
+      <p style={{ margin: "25px 0" }}>
+        Stars:{" "}
+        <span className="text-muted font-weight-bold">
+          {Array.from({ length: hotel.stars }, (_, index) => (
+            <FontAwesomeIcon
+              icon={faStar}
+              key={index}
+              style={{ color: "#FFD700" }}
+            />
+          ))}
+        </span>
+      </p>
+      <p style={{ margin: "25px 0" }}>
+        Amenities:{" "}
+        <span className="text-muted font-weight-bold">
+          {hotel.amenities.join(", ")}
+        </span>
+      </p>
+      <p style={{ margin: "25px 0" }}>
+        Average Price for 2 Persons:{" "}
+        <span className="text-muted font-weight-bold">
+          {hotel.averagePriceFor2Persn}
+        </span>
+      </p>
+    </div>
+  </div>
+);
+
+// Composant principal Hotels
 const Hotels = () => {
+  // State et effets (hooks)
   const [cityHotels, setCityHotels] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [cityOptions, setCityOptions] = useState([]);
@@ -61,18 +155,20 @@ const Hotels = () => {
   const [filteredHotels, setFilteredHotels] = useState([]);
 
   useEffect(() => {
-    // Replace 'http://localhost:8080' with the actual URL of your Express API
+    // Remplacez 'http://localhost:8080' par l'URL réelle de votre API Express
     fetch("http://localhost:8083/CityHotels")
       .then((response) => response.json())
       .then((data) => {
         setCityHotels(data.CityHotels);
-        // Extract city names for dropdown options
+        // Extrait les noms de ville pour les options du menu déroulant
         const cities = data.CityHotels.map((city) => city.cityName);
         setCityOptions(cities);
-        // Set filtered hotels initially to all hotels
+        // Initialise les hôtels filtrés à tous les hôtels
         setFilteredHotels(data.CityHotels);
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) =>
+        console.error("Erreur lors de la récupération des données :", error)
+      );
   }, []);
 
   const handleCityChange = (e) => {
@@ -117,12 +213,21 @@ const Hotels = () => {
     setFilteredHotels(filteredCityHotels);
   };
 
+  // Rendu du composant principal
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center",backgroundColor:"rgb(240,235,229,255)",paddingBottom: "80px"}}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "rgb(240,235,229,255)",
+        paddingBottom: "80px",
+      }}
     >
       <div style={{ marginTop: "120px" }}>
-        <h1 className="text-center mb-4 mt-4 beautiful-title">Welcome To Our Hotels</h1>
+        <h1 className="text-center mb-4 mt-4 beautiful-title">
+          Welcome To Our Hotels
+        </h1>
         <div className="background-div">
           <div style={{ marginTop: "30px" }}>
             <p className="ml-5 mr-5 text-center text-hotels">
@@ -151,11 +256,10 @@ const Hotels = () => {
           onChange={handleCityChange}
           list="cityOptions"
           style={{
-            padding: "10px", // Adjust the padding as needed
-            fontSize: "16px", // Adjust the font size as needed
-            border: "1px solid #ccc", // Adjust the border as needed
-            borderRadius: "5px", // Adjust the border radius as needed
-            // Add any additional styles here
+            padding: "10px",
+            fontSize: "16px",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
           }}
         />
         {cityOptions.length > 0 && (
@@ -170,22 +274,46 @@ const Hotels = () => {
         className="stars-checkboxes"
         style={{
           backgroundColor: "rgb(153, 26, 45)",
-          padding: "10px", // Adjust the padding as needed
-          borderRadius: "8px", // Adjust the border radius as needed
-          color: "#fff", // Adjust the text color as needed
+          padding: "10px",
+          borderRadius: "8px",
+          color: "#fff",
         }}
       >
         <p className="text-center rounded">Select Stars</p>
         {[3, 4, 5].map((star) => (
-          <label key={star}>
+          <label
+            key={star}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <input
               type="checkbox"
               value={star}
               checked={selectedStars.includes(star.toString())}
               onChange={handleStarsChange}
+              style={{ display: "none" }}
             />
-            &nbsp;
-            {star} Stars&nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{ textAlign: "center", paddingLeft: "16px" }}>
+              {Array.from({ length: star }, (_, index) => (
+                <FontAwesomeIcon
+                  key={index}
+                  icon={
+                    selectedStars.includes(star.toString())
+                      ? solidStar
+                      : regularStar
+                  }
+                  style={{
+                    color: selectedStars.includes(star.toString())
+                      ? "#FFD700"
+                      : "#ccc",
+                  }}
+                />
+              ))}
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
           </label>
         ))}
       </div>
@@ -196,9 +324,12 @@ const Hotels = () => {
         .map((city) => (
           <div key={city.cityId} className="container ml-3 mr-3">
             <h3>
-              <p className="mr-2">
+              <p className="mr-2 city-title">
                 City:
-                <a href={`http://localhost:3000/stadiums/${city.cityId}`}>
+                <a
+                  href={`http://localhost:3000/stadiums/${city.cityId}`}
+                  className="city-link"
+                >
                   <span className="text-muted font-weight-bold">
                     {city.cityName}
                   </span>
@@ -206,70 +337,71 @@ const Hotels = () => {
               </p>
             </h3>
             {city.hotels.map((hotel, index) => (
-              <div key={index} className="hotel-container">
-                <h5>{hotel.name}</h5>
-                <br />
-                <div className="hotel-details">
-                  <p>
-                    Address:{" "}
-                    <span className="text-muted font-weight-bold">
-                      {hotel.address}
-                    </span>
-                  </p>
-                  <p>
-                    Stars:{" "}
-                    <span className="text-muted font-weight-bold">
-                      {hotel.stars}
-                    </span>
-                  </p>
-                </div>
-                <div className="hotel-photos">
-                  {/* Utilisez le composant HotelGallery pour afficher les images */}
-                  <HotelGallery photos={hotel.photos} />
-                </div>
-                <div className="hotel-details">
-                  <p>
-                    Amenities:{" "}
-                    <span className="text-muted font-weight-bold">
-                      {hotel.amenities.join(", ")}
-                    </span>
-                  </p>
-                  <p>
-                    Average Price for 2 Persons:{" "}
-                    <span className="text-muted font-weight-bold">
-                      {hotel.averagePriceFor2Persn}
-                    </span>
-                  </p>
-                </div>
-                <br />
-                <br />
-                <br />
-                <br />
-              </div>
+              <HotelCard key={index} hotel={hotel} />
             ))}
           </div>
         ))}
-        <style>
-          {
-            `
+      <style>
+        {`
             @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
             .beautiful-title {
               font-family: 'Amiri', sans-serif;
-              color: #991a2d; /* Your preferred text color */
-              font-size: 2.5rem; /* Adjust the font size as needed */
+              color: #991a2d;
+              font-size: 2.5rem;
               text-transform: uppercase;
-              letter-spacing: 2px; /* Adjust the letter spacing as needed */
-              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle text shadow */
-              margin-bottom: 20px; /* Adjust the margin as needed */
+              letter-spacing: 2px;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+              margin-bottom: 20px;
             }
             .text-hotels{
               font-family: 'Amiri', sans-serif;
             }
-            
-            `
 
-          }
-        </style>
+            .hotel-card {
+              display: flex;
+              margin: 10px;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+            }
+
+            .hotel-photos {
+              flex: 1;
+            }
+
+            .hotel-details {
+              flex: 2;
+              padding: 0 10px;
+            }
+
+            .hotel-title {
+              font-family: 'Amiri', sans-serif;
+              color: #991a2d;
+              font-size: 1.8rem;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin-bottom: 10px;
+            }
+
+            .city-title {
+              font-family: 'Amiri', sans-serif;
+              color: #991a2d;
+              font-size: 1.8rem;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin-bottom: 10px;
+            }
+            .city-link {
+              color: #991a2d;
+              font-weight: bold;
+              text-decoration: none;
+            }
+        
+            .city-link:hover {
+              text-decoration: underline;
+            }
+            `}
+      </style>
     </div>
   );
 };
