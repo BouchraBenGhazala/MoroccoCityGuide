@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import pageBG from "../Images/destination_slide.jpg";
 import Footer from '../footer';
-import bgArtisan from "../Images/bgArtisan.jpg"
+
 import Banding from '../banding';
 const PopularPlaces=() => {
   const [popularPlaces, setpopularPlaces] = useState([]);

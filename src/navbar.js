@@ -113,10 +113,10 @@ const Navbar = () => {
                       color:red;
                       font-size:25px;
                     }
+                   
                     .nav-link.active{
                       color:red;
-                      
-                    }
+                  }
                     .navbar{
                       font-family: 'Amiri', sans-serif;
                       
