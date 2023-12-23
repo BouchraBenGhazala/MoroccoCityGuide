@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-//import pageBG from "../Images/destination_slide.jpg";
+import pageBG from "../Images/destination_slide.jpg";
 import Footer from '../footer';
-//import bgArtisan from "../Images/bgArtisan.jpg"
+import bgArtisan from "../Images/bgArtisan.jpg"
 import Banding from '../banding';
 const PopularPlaces=() => {
   const [popularPlaces, setpopularPlaces] = useState([]);
@@ -20,7 +20,7 @@ const PopularPlaces=() => {
         <style>
           {`
           .homeContainer {
-            
+            background-image: url(${pageBG});
             background-size: cover; 
             height:560px;
             filter: brightness(60%);
