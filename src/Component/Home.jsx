@@ -50,6 +50,8 @@ const Home = () => {
       </div>
       
       <div className="slider">
+      <Link to={`/popular-places`}><button className="buttonPlaces">Visit Popular places →</button></Link>
+
         <Carousel autoPlay infiniteLoop showThumbs={false}>
           {popularPlaces.map(popularPlace => (
             <div key={popularPlace.city}>
@@ -71,6 +73,25 @@ const Home = () => {
             .slider{
               background-color: #d9ac30;
             }
+            .buttonPlaces{
+              border-radius:5px;
+              background-color:#991a2d;
+              color:white;
+              font-weight:bold;
+              padding:10px;
+              margin-bottom:10px;
+              border:none;
+              float: right;
+              margin-top:5px;
+            }
+  
+            .buttonPlaces:hover{
+              background-color:#d9ac30;
+              color:#991a2d;
+              font-weight:bold;
+              border:2px solid #991a2d;
+            
+            }
             `
           }
         </style>
@@ -79,6 +100,7 @@ const Home = () => {
       <div className="stadiums">
         <div className="container">
           <div className="row">
+            <Link to={`/stadiums`}><button className="buttonStadiums">Visit Stadiums →</button></Link>
             {stadiums.map(stadium => (
               <div key={stadium.id} className="col-4 image-container">
                 <Link to={`/stadiums/${stadium.id}`}>
@@ -109,6 +131,24 @@ const Home = () => {
             transform: scale(1.1);
             filter: brightness(80%);
             opacity: 0.8;
+          }
+          .buttonStadiums{
+            border-radius:5px;
+            background-color:#991a2d;
+            color:white;
+            font-weight:bold;
+            padding:10px;
+            margin-bottom:10px;
+            border:none;
+            float: right;
+          }
+
+          .buttonStadiums:hover{
+            background-color:#d9ac30;
+            color:#991a2d;
+            font-weight:bold;
+            border:2px solid #991a2d;
+          
           }
           `}
         </style>
