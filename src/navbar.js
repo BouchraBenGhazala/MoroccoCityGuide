@@ -101,7 +101,7 @@ const Navbar = () => {
                       color:white;
                     }
                     .custom-color2{
-                      color:#991a2d;
+                      color:#d9ac30;
                     }
                     .nav-link{
                       font-weight: bold;

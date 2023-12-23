@@ -1,4 +1,5 @@
 import React from 'react';
+import footerBG from './Images/patterns-temoignage.png';
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-md-12 text-center">
             <p className="footer-text">
-              © 2023 MoroccanCitiesGuide.<br/>
+              © 2023 MoroccanCityGuide.<br/>
               Bouchra BENGHAZALA - Oussama FECHTALI
             </p>
           </div>
@@ -16,10 +17,12 @@ const Footer = () => {
       <style>
         {`
           .footer {
-            background-color: #991a2d;
+            background-image: url(${footerBG});
+            background-size: cover; 
             padding: 20px 0;
-            color: rgba(240, 235, 229, 255);
+            color: white;
             font-family: 'Amiri', sans-serif;
+            font-weight:bold;
           }
 
           .footer-text {
