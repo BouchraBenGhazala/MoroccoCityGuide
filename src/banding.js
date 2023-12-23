@@ -15,7 +15,8 @@ const Banding = () => {
           .footer {
             background-image: url(${footerBG});
             background-size: cover; 
-            padding: 20px 0;
+           
+            background-color:#d9ac30;
 
           }
 

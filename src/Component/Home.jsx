@@ -3,9 +3,13 @@ import React, { useEffect, useState } from "react";
 import Footer from "../footer";
 import homeBG from "../pubsImages/bg9.jpg";
 import { Link } from "react-router-dom";
+import Banding from "../banding";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Home = () => {
   const [stadiums, setStadiums] = useState([]);
+  const [popularPlaces, setpopularPlaces] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:8083/stadium')
@@ -13,6 +17,13 @@ const Home = () => {
       .then(data => setStadiums(data.stadium))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
+  useEffect(() => {
+    // Replace 'http://localhost:8080' with the actual URL of your Express API
+    fetch('http://localhost:8083/PopularPlaces')
+      .then(response => response.json())
+      .then(data => setpopularPlaces(data.PopularPlaces))  // Access the "stadium" array
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); 
 
   return (
     <div className="Container" style={{ display: "flex", flexDirection: "column" }}>
@@ -37,6 +48,34 @@ const Home = () => {
           `}
         </style>
       </div>
+      
+      <div className="slider">
+        <Carousel autoPlay infiniteLoop showThumbs={false}>
+          {popularPlaces.map(popularPlace => (
+            <div key={popularPlace.city}>
+                          {popularPlace.places.map((place, index) => (
+                    index === 0 && (
+                      <div key={place.name} className='slide'>
+                        <img src={place.image} alt={place.name} className="slide-image" style={{ width: "100%", height: "500px" }} />
+                      </div>
+                    )
+                  ))}
+            
+              <br />
+            </div>
+          ))}
+        </Carousel>
+        <style>
+          {
+            `
+            .slider{
+              background-color: #d9ac30;
+            }
+            `
+          }
+        </style>
+          </div>
+          <Banding/>
       <div className="stadiums">
         <div className="container">
           <div className="row">
@@ -74,6 +113,9 @@ const Home = () => {
           `}
         </style>
       </div>
+      
+
+      
       <div className="foot">
         <Footer />
         <style>

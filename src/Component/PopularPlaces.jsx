@@ -42,7 +42,6 @@ const PopularPlaces=() => {
       <div className='text-center pb-5'>
           {popularPlaces.map(popularPlace => (
           <div key={popularPlace.city} >
-            <Banding />
             <h2 className=' beautiful-subtitle pt-3'>{popularPlace.city}</h2>
             <div className='container places'>
             <div className='row'>
@@ -66,11 +65,7 @@ const PopularPlaces=() => {
         <style>
         {
             `
-            .places{
-              background-color:#991a2d;
-              padding:30px 10px;
-              border-radius:5px;
-            }
+        
             .beautiful-subtitle {
               font-family: 'Amiri', sans-serif;
               color: #991a2d; /* Your preferred text color */
