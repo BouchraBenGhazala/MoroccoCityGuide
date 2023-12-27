@@ -4,7 +4,6 @@ import footBG from '../pubsImages/bg4.jpg';
 import video from "../StadiumVideos/Agadir Stadium.mp4";
 const StadiumDetails = () => {
     const [stadium, setStadium] = useState(null);
-    const [showMaps, setShowMaps] = useState(false); // Add this state
     const { id: stadiumId } = useParams();
     const [dynamicVideo, setDynamicVideo] = useState(null);
 
@@ -64,7 +63,7 @@ const StadiumDetails = () => {
         </section>
         <section className='maps'>
         <h3>Maps:</h3>
-        {showMaps && (
+
           <div>
             {/* Add your Google Maps iframe code here */}
             <iframe
@@ -76,10 +75,7 @@ const StadiumDetails = () => {
               allowFullScreen
             ></iframe>
           </div>
-        )}
-        <button onClick={() => setShowMaps(!showMaps)} className='btn'>
-          {showMaps ? 'Hide Maps' : 'Show Maps'}
-        </button>
+
       </section>
 
         <section className="events">
