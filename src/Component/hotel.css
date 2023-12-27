@@ -1,31 +1,28 @@
-/* hotel.css */
-
-/* Style pour les flèches de la galerie d'hôtel */
 .arrow-style {
   cursor: pointer;
-  font-size: 36px; /* Ajustez la taille selon vos besoins */
-  margin: 0 10px; /* Ajustez la marge selon vos besoins */
+  font-size: 36px; 
+  margin: 0 10px;
 }
 
-/* Style pour la section de recherche */
+
 .search-bar {
   margin-bottom: 20px;
 }
 
-/* Style pour la section des étoiles */
+
 .stars-checkboxes {
   background-color: rgb(153, 26, 45);
 }
 
-/* Style pour le conteneur de l'hôtel */
+
 .hotel-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px; /* Ajustez la marge selon vos besoins */
+  margin-top: 20px; 
 }
 
-/* Style pour le conteneur de la carte d'hôtel */
+
 .hotel-card {
   display: flex;
   flex-wrap: wrap;
@@ -35,69 +32,70 @@
   border-radius: 8px;
 }
 
-/* Style pour la section des photos d'hôtel */
+
 .hotel-photos {
   flex: 1;
-  margin-right: 20px; /* Ajustez la marge entre les photos et les détails */
+  margin-right: 20px; 
 }
 
-/* Style pour la section des détails d'hôtel */
+
 .hotel-details {
   flex: 2;
   padding: 0 10px;
 }
 
-/* Style pour chaque information dans une ligne */
+
 .hotel-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px; /* Ajoutez une marge en bas pour séparer les éléments */
+  margin-bottom: 10px; 
 }
 
-/* Ajoutez une marge en bas pour séparer les éléments */
+
 .spacer {
   width: 100%;
   margin-bottom: 10px;
 }
 
-/* Style pour le titre des hôtels */
+
 .hotel-details h5 {
   font-family: 'Amiri', sans-serif;
   color: #991a2d;
-  font-size: 1.5rem; /* Ajustez la taille selon vos besoins */
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 10px; /* Ajustez la marge en bas selon vos besoins */
+  margin-bottom: 10px;
 }
 
-/* Style pour chaque information dans une ligne avec un interligne augmenté */
+
 .hotel-info {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px; /* Augmentez la marge en bas selon vos besoins */
+  margin-bottom: 15px; 
 }
 
-/* Style pour les liens au survol dans les informations de l'hôtel */
+
 .hotel-info a:hover {
   color: #991a2d;
   font-weight: bold;
 }
 
-/* Style pour le texte en surbrillance dans les informations de l'hôtel */
+
 .hotel-info .text-highlight {
   color: #991a2d;
   font-weight: bold;
-  margin-bottom: 5px; /* Ajustez la marge en bas selon vos besoins */
+  margin-bottom: 5px;
 }
 
-/* Style pour la barre de recherche de la ville */
+
+
 .search-bar {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-/* Style pour le champ de recherche */
+
 .search-bar input[type="text"] {
   padding: 10px;
   font-size: 16px;
@@ -107,12 +105,12 @@
   margin-right: 10px;
 }
 
-/* Style pour la liste déroulante des options de la ville */
+
 datalist {
   display: none;
 }
 
-/* Style pour le bouton de recherche (facultatif) */
+
 .search-bar button {
   background-color: #007bff;
   color: #fff;

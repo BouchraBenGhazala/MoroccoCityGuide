@@ -1,4 +1,3 @@
-// Importations
 import React, { useEffect, useState } from "react";
 import { Modal, Carousel } from "react-bootstrap";
 import "./hotel.css";
@@ -9,15 +8,11 @@ import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
-// ... (importations)
-
-// Composant HotelGallery pour afficher les images
 const HotelGallery = ({ photos }) => {
   const [showModal, setShowModal] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
   useEffect(() => {
-    // Préchargez toutes les images en arrière-plan
     photos.forEach((photo) => {
       const img = new Image();
       img.src = photo;
@@ -94,18 +89,9 @@ const HotelGallery = ({ photos }) => {
   );
 };
 
-// Style pour les flèches
-const arrowStyle = {
-  cursor: "pointer",
-  fontSize: "36px",
-  margin: "0 10px",
-};
-
-// Composant HotelCard pour représenter chaque hôtel
-const HotelCard = ({ hotel }) => (
+const HotelCard = ({ hotel, addToFavorites, removeFromFavorites }) => (
   <div className="hotel-card">
     <div className="hotel-photos">
-      {/* Utilisez le composant HotelGallery pour afficher les images */}
       <HotelGallery photos={hotel.photos} />
     </div>
     <div className="hotel-details">
@@ -144,9 +130,7 @@ const HotelCard = ({ hotel }) => (
   </div>
 );
 
-// Composant principal Hotels
 const Hotels = () => {
-  // State et effets (hooks)
   const [cityHotels, setCityHotels] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [cityOptions, setCityOptions] = useState([]);
@@ -155,15 +139,12 @@ const Hotels = () => {
   const [filteredHotels, setFilteredHotels] = useState([]);
 
   useEffect(() => {
-    // Remplacez 'http://localhost:8080' par l'URL réelle de votre API Express
     fetch("http://localhost:8083/CityHotels")
       .then((response) => response.json())
       .then((data) => {
         setCityHotels(data.CityHotels);
-        // Extrait les noms de ville pour les options du menu déroulant
         const cities = data.CityHotels.map((city) => city.cityName);
         setCityOptions(cities);
-        // Initialise les hôtels filtrés à tous les hôtels
         setFilteredHotels(data.CityHotels);
       })
       .catch((error) =>
@@ -213,7 +194,6 @@ const Hotels = () => {
     setFilteredHotels(filteredCityHotels);
   };
 
-  // Rendu du composant principal
   return (
     <div
       style={{
@@ -325,12 +305,14 @@ const Hotels = () => {
           <div key={city.cityId} className="container ml-3 mr-3">
             <h3>
               <p className="mr-2 city-title">
-                City:
                 <a
                   href={`http://localhost:3000/stadiums/${city.cityId}`}
                   className="city-link"
                 >
-                  <span className="text-muted font-weight-bold">
+                  <span
+                    className="font-weight-bold"
+                    style={{ paddingLeft: "40px" }}
+                  >
                     {city.cityName}
                   </span>
                 </a>{" "}
@@ -341,6 +323,7 @@ const Hotels = () => {
             ))}
           </div>
         ))}
+
       <style>
         {`
             @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
@@ -399,6 +382,19 @@ const Hotels = () => {
         
             .city-link:hover {
               text-decoration: underline;
+            }
+
+            .add-to-favorites-btn {
+              background-color: #ff4081;
+              color: #fff;
+              border: none;
+              padding: 8px 12px;
+              cursor: pointer;
+              border-radius: 4px;
+            }
+  
+            .add-to-favorites-btn:hover {
+              background-color: #d81b60;
             }
             `}
       </style>
