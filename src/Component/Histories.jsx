@@ -52,19 +52,22 @@ const Histories = () => {
           className={`city-card ${index % 2 === 0 ? "even" : "odd"}`}
         >
           <div className="city-content">
-            <h6 className="text-center mb-4 mt-4 beautiful-title">
+            <h3 className="text-center mb-4 mt-4 beautiful-title">
               {city.cityName}
-            </h6>
+            </h3>
             <p>{city.overview}</p>
             <div className="city-details">
               <p>
-                <strong>Climate:</strong> {city.climate}
+                <strong className="text-center mb-4 mt-4 beautiful-title">
+                  Climate:
+                </strong>{" "}
+                {city.climate}
               </p>
             </div>
           </div>
           <div className="circle-container">
             <img src={circleImage} alt="Circle" className="circle-image" />
-            <div className="circle-info">
+            <div className="circle-info" style={{ color: "#D9AC30" }}>
               <p>
                 <strong>
                   {" "}
@@ -98,7 +101,6 @@ const Histories = () => {
           .beautiful-title {
             font-family: 'Amiri', sans-serif;
             color: #991a2d;
-            font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
