@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import footBG from '../pubsImages/bg4.jpg';
 import video from "../StadiumVideos/Agadir Stadium.mp4";
+import Lottie from 'lottie-react'
+import animationData from '../animations/position.json'
+import animationMaps from '../animations/maps.json'
+import animationEvents from '../animations/events.json'
+import animationSurface from '../animations/surface.json'
+import animationConstruction from '../animations/construction.json'
+
 const StadiumDetails = () => {
     const [stadium, setStadium] = useState(null);
     const { id: stadiumId } = useParams();
@@ -56,13 +63,13 @@ const StadiumDetails = () => {
         </section>
 
         <section className="address">
-          <h3>Address:</h3>
+        <Lottie animationData={animationData} style={{ width: '8%', height: '8%' }}/>
           <p><span className='title'>City: </span>{stadium.address.city}</p>
           <p><span className='title'>Neighborhood: </span>{stadium.address.neighborhood}</p>
           <p><span className='title'>Street: </span>{stadium.address.street}</p>
         </section>
         <section className='maps'>
-        <h3>Maps:</h3>
+        <Lottie animationData={animationMaps} style={{ width: '8%', height: '8%' }}/>
 
           <div>
             {/* Add your Google Maps iframe code here */}
@@ -79,7 +86,7 @@ const StadiumDetails = () => {
       </section>
 
         <section className="events">
-          <h3>Events:</h3>
+        <Lottie animationData={animationEvents} style={{ width: '8%', height: '8%' }}/>
           <ul>
             {stadium.events.map(event => (
               <li key={event}>{event}</li>
@@ -88,14 +95,14 @@ const StadiumDetails = () => {
         </section>
 
         <section className="field">
-          <h3>Field:</h3>
+        <Lottie animationData={animationSurface} style={{ width: '10%', height: '10%' }}/>
           <p><span className='title'>Length: </span>{stadium.field.length}</p>
           <p><span className='title'>Width: </span>{stadium.field.width}</p>
           <p><span className='title'>Surface: </span>{stadium.field.surface}</p>
         </section>
 
         <section className="construction">
-          <h3>Construction:</h3>
+        <Lottie animationData={animationConstruction} style={{ width: '10%', height: '10%' }}/>
           <p><span className='title'>Opened: </span>{stadium.construction.opened}</p>
           <p><span className='title'>Renovated: </span>{stadium.construction.renovated.join(', ')}</p>
         </section>
