@@ -6,6 +6,8 @@ import casquette from '../pubsImages/moroccan casquette.jpg';
 import { Link } from 'react-router-dom';
 import Footer from '../footer';
 import homeBG from "../pubsImages/bg2.avif";
+import Lottie from 'lottie-react'
+import animationData from '../animations/Animation - 1703786124750.json'
 
 const StadiumList = () => {
   const [stadiums, setStadiums] = useState([]);
@@ -24,12 +26,18 @@ const StadiumList = () => {
   
       </div>
       <h1 className='text-center mb-4 beautiful-title mt-4'>Moroccan's Popular Stadiums</h1>
-      <div className="background-div p-4">
+      <div className="row background-div p-4">
+        <div className='col-8'>
         <p className='ml-3 mr-3'>In a historic moment for Moroccan football, the nation is set to play host to the FIFA World Cup in 2030 across six distinguished stadiums.
           <br />These venues, strategically chosen to showcase the country's passion for the sport, are poised to become the epicenter of global footballing fervor. <br />
           From the vibrant cityscape of Casablanca to the cultural heart of Marrakech, each stadium contributes its unique charm to the tournament's landscape.<br />
           As Morocco prepares to welcome teams and fans from around the world, these six iconic stadiums, meticulously maintained and equipped with state-of-the-art facilities, stand as a testament to the country's commitment to delivering a world-class World Cup experience in 2030.<br />
           The anticipation is palpable as the countdown begins for this momentous event that will undoubtedly leave an indelible mark on the history of Moroccan sports.</p>
+        </div>
+        <div className='col-3'>
+        <Lottie animationData={animationData} style={{ width: '100%', height: '100%' }}/>
+        </div>
+
       </div>
 
       <div className='container'>

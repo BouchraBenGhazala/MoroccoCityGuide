@@ -2,6 +2,8 @@ import mrcacceuilImage from "../Images/histoire_0.jpg";
 import circleImage from "../Images/pp1.png";
 
 import React, { useEffect, useState } from "react";
+import Lottie from 'lottie-react'
+import animationData from '../animations/morocco logo.json'
 
 const Histories = () => {
   const [historyCities, setHistoryCities] = useState([]);
@@ -25,7 +27,6 @@ const Histories = () => {
           }
         `}
       </style>
-      
       <div className="header-section">
         <div
           className="background-image"
@@ -42,6 +43,7 @@ const Histories = () => {
           </h1>
         </div>
       </div>
+      <Lottie animationData={animationData} style={{ width: '20%', height: '20%' }}></Lottie>
       {historyCities.map((city, index) => (
         <div
           key={city.id}
@@ -90,8 +92,11 @@ const Histories = () => {
               className="city-image-hover"
             />
           </div>
+
         </div>
+        
       ))}
+       <Lottie animationData={animationData} style={{ width: '20%', height: '20%' }}></Lottie>
       <style>
         {`
           .beautiful-title {
@@ -203,6 +208,7 @@ const Histories = () => {
 
         `}
       </style>
+
     </div>
   );
 };
