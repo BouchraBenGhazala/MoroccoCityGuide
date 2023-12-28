@@ -36,7 +36,7 @@ const PopularPlaces = () => {
             background-image: url(${pageBG});
             background-size: cover; 
             height:560px;
-            filter: brightness(60%);
+            filter: brightness(70%);
             opacity: 0.9;
           }
           .beautiful-title {

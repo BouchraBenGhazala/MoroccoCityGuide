@@ -58,7 +58,7 @@ const Home = () => {
                           {popularPlace.places.map((place, index) => (
                     index === 0 && (
                       <div key={place.name} className='slide'>
-                        <img src={place.image} alt={place.name} className="slide-image" style={{ width: "100%", height: "500px" }} />
+                        <img src={place.image} alt={place.name} className="slide-image" style={{ width: "100%", height: "490px" }} />
                       </div>
                     )
                   ))}
@@ -74,22 +74,17 @@ const Home = () => {
               background-color: #d9ac30;
             }
             .buttonPlaces{
-              border-radius:5px;
-              background-color:#991a2d;
-              color:white;
-              font-weight:bold;
-              padding:10px;
-              margin-bottom:10px;
+              background-color:#d9ac30;
+              color:#991a2d;
               border:none;
               float: right;
-              margin-top:5px;
+              margin:5px 0px;
+              font-weight:bold;
             }
   
             .buttonPlaces:hover{
-              background-color:#d9ac30;
-              color:#991a2d;
               font-weight:bold;
-              border:2px solid #991a2d;
+              text-decoration:underline;
             
             }
             `
@@ -133,21 +128,17 @@ const Home = () => {
             opacity: 0.8;
           }
           .buttonStadiums{
-            border-radius:5px;
-            background-color:#991a2d;
-            color:white;
-            font-weight:bold;
-            padding:10px;
-            margin-bottom:10px;
+            background-color:#d9ac30;
+            color:#991a2d;
             border:none;
             float: right;
+            margin:5px 0px;
+            font-weight:bold;
           }
 
           .buttonStadiums:hover{
-            background-color:#d9ac30;
-            color:#991a2d;
             font-weight:bold;
-            border:2px solid #991a2d;
+            text-decoration:underline;
           
           }
           `}
