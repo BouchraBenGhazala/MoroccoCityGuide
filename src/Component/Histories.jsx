@@ -1,4 +1,4 @@
-import mrcacceuilImage from "../Images/mrcacceuil.jpg";
+import mrcacceuilImage from "../Images/histoire_0.jpg";
 import circleImage from "../Images/pp1.png";
 
 import React, { useEffect, useState } from "react";
@@ -14,6 +14,7 @@ const Histories = () => {
   }, []);
 
   return (
+    
     <div className="container-histories">
       <style>
         {`
@@ -24,7 +25,7 @@ const Histories = () => {
           }
         `}
       </style>
-
+      
       <div className="header-section">
         <div
           className="background-image"
@@ -35,14 +36,9 @@ const Histories = () => {
           }}
         >
           <div className="overlay"></div>
-          <h1
-            style={{
-              margin: "0 auto",
-              color: "#991A2D",
-              textShadow: "2px 2px #DAA82F",
-            }}
+          <h1 className="text-center beautiful-Title"
           >
-            History of Morocco
+            History of Moroccan Cities
           </h1>
         </div>
       </div>
@@ -106,6 +102,14 @@ const Histories = () => {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
           }
+          .beautiful-Title {
+            font-family: 'Amiri', sans-serif;
+            color: #991a2d;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 2px white;
+          }
           .container-histories {
             position: relative;
             overflow: hidden;
@@ -124,10 +128,11 @@ const Histories = () => {
             display: flex;
             align-items: center;
             justify-content: center;
+            filter: brightness(80%);
+            opacity: 0.9;
           }
 
           .overlay {
-            background: rgba(0, 0, 0, 0.5);
             position: absolute;
             top: 0;
             left: 0;
@@ -143,12 +148,12 @@ const Histories = () => {
             transition: transform 0.3s;
             width: 80%; 
             margin: 0 auto; 
-            margin-bottom: 10%;
+            margin-bottom: 0%;
             position: relative;
           }
 
           .city-content {
-            flex: 1;
+            flex: 2;
             text-align: left;
             width: 40%;
             max-width: 300px;
@@ -164,7 +169,8 @@ const Histories = () => {
           }
 
           .circle-image {
-            width: 50%; 
+            flex:2;
+            width: 80%; 
             height: auto; 
             max-width: 500px; 
             max-height: 250px; 
@@ -193,6 +199,8 @@ const Histories = () => {
           .city-image img:hover {
             transform: scale(1.1);
           }
+
+
         `}
       </style>
     </div>
