@@ -55,10 +55,10 @@ const PopularPlaces = () => {
         {popularPlaces.map(popularPlace => (
           <div key={popularPlace.city}>
             <h2 className='beautiful-subtitle pt-3'>{popularPlace.city}</h2>
-            <div className='container places'>
+            <div className='container'>
               <div className='row'>
                 {popularPlace.places.map(place => (
-                  <div key={place.name} className='col-4'>
+                  <div key={place.name} className='col-4'> 
                     <img
                       src={place.image}
                       alt={place.name}
@@ -95,9 +95,10 @@ const PopularPlaces = () => {
             ></iframe>
           </div>
         )}
-        <button onClick={() => setShowMaps(!showMaps)} className='btn'>
+        <button onClick={(e) => { e.stopPropagation(); setShowMaps(!showMaps); }} className='btn' style={{ border: '1px solid black' }}>
           {showMaps ? 'Hide Maps' : 'Show Maps'}
         </button>
+
           </div>
         </div>
       )}
@@ -115,6 +116,7 @@ const PopularPlaces = () => {
             font-family: 'Amiri', sans-serif;
             background-color: #d9ac30;
           }
+   
 
           .img-fluid {
             border-top-left-radius: 100px;
