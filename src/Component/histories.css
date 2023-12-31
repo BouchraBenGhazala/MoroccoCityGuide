@@ -1,0 +1,173 @@
+body {
+  background-color: #d9ac30;
+  margin: 0;
+  padding: 0;
+}
+
+.beautiful-title {
+  font-family: "Amiri", sans-serif;
+  color: #991a2d;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.container-histories {
+  position: relative;
+  overflow: hidden;
+}
+
+.header-section {
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.background-image {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(80%);
+  opacity: 0.9;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.city-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin: 20px;
+  transition: transform 0.3s;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 0%;
+  position: relative;
+}
+
+.city-content {
+  flex: 2;
+  text-align: left;
+  width: 100%;
+  padding-right: 20px;
+}
+
+.city-content h3 {
+  margin: 0;
+}
+
+.city-content ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.city-content li {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.circle-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.circle-image {
+  flex: 2;
+  width: 80%;
+  height: auto;
+  max-width: 200px;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.circle-info {
+  position: absolute;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+.circle-info p {
+  margin: 0;
+}
+
+.city-image {
+  flex: 1;
+  text-align: center;
+}
+
+.city-image img {
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 30px;
+  margin-top: 20px;
+  transition: transform 0.3s, all 2s;
+}
+
+@media (min-width: 1200px) {
+  .city-image img {
+    margin-left: 100px;
+  }
+}
+
+@media (min-width: 576px) {
+  .city-card {
+    flex-direction: row;
+  }
+  .city-content {
+    width: 40%;
+  }
+  .circle-container {
+    margin-top: 0;
+  }
+  .circle-info {
+    margin-top: 0;
+  }
+  .city-image img {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .background-image {
+    height: 80vh;
+  }
+}
+
+@media (min-width: 992px) {
+  .background-image {
+    height: 100vh;
+  }
+}
+
+.city-image img:hover {
+  transform: scale(1.1);
+}
