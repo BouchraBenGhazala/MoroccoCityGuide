@@ -91,7 +91,10 @@ const HotelGallery = ({ photos }) => {
 };
 
 const HotelCard = ({ hotel, addToFavorites, removeFromFavorites }) => (
-  <div className="hotel-card" style={{ backgroundColor: "rgb(240,235,229,255)" }}>
+  <div
+    className="hotel-card"
+    style={{ backgroundColor: "rgb(240,235,229,255)" }}
+  >
     <div className="hotel-photos">
       <HotelGallery photos={hotel.photos} />
     </div>
@@ -221,31 +224,32 @@ const Hotels = () => {
             Welcome To Our Hotels
           </h1>
         </div>
-        <div className="background-div"
-        style={{
-          color:"#FFFFFF",
-          padding:"20px",
-          marginBottom:"50px",
-          marginTop:"50px",
-          marginLeft:"70px",
-          marginRight:"70px",
-          backgroundColor: "#991A2D"
-        }}
+        <div
+          className="background-div"
+          style={{
+            color: "#FFFFFF",
+            padding: "20px",
+            marginBottom: "50px",
+            marginTop: "50px",
+            marginLeft: "70px",
+            marginRight: "70px",
+            backgroundColor: "#991A2D",
+          }}
         >
-            <p className="ml-3 mr-3 text-center text-hotels">
-              Welcome to our exclusive selection of hotels for the 2030 World
-              Cup in Morocco, offering a diverse experience ranging from
-              sophisticated five-star luxury to the welcoming warmth of
-              three-star accommodations. Whether you choose the refined elegance
-              of our five-star hotels, the perfect harmony of comfort and
-              convenience in our four-star establishments, or the accessible
-              charm of our three-star options, each property embodies a
-              commitment to excellence, authenticity, and comfort. Elegant
-              rooms, modern facilities, strategic proximity to World Cup venues,
-              warm hospitality, and affordable rates ensure that your stay is an
-              unforgettable experience. We look forward to welcoming you, making
-              your World Cup stay as memorable as the action on the field.
-            </p>
+          <p className="ml-3 mr-3 text-center text-hotels">
+            Welcome to our exclusive selection of hotels for the 2030 World Cup
+            in Morocco, offering a diverse experience ranging from sophisticated
+            five-star luxury to the welcoming warmth of three-star
+            accommodations. Whether you choose the refined elegance of our
+            five-star hotels, the perfect harmony of comfort and convenience in
+            our four-star establishments, or the accessible charm of our
+            three-star options, each property embodies a commitment to
+            excellence, authenticity, and comfort. Elegant rooms, modern
+            facilities, strategic proximity to World Cup venues, warm
+            hospitality, and affordable rates ensure that your stay is an
+            unforgettable experience. We look forward to welcoming you, making
+            your World Cup stay as memorable as the action on the field.
+          </p>
         </div>
       </div>
 
@@ -274,6 +278,7 @@ const Hotels = () => {
       <div
         className="stars-checkboxes"
         style={{
+          marginTop: "30px",
           backgroundColor: "rgb(153, 26, 45)",
           padding: "10px",
           borderRadius: "8px",

@@ -3,6 +3,7 @@ import Footer from "../footer";
 import homeBG from "../pubsImages/bg9.jpg";
 import { Link } from "react-router-dom";
 import Banding from "../banding";
+import bgimg from "../Images/bghtls.jpg";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -10,6 +11,18 @@ const Home = () => {
   const [stadiums, setStadiums] = useState([]);
   const [popularPlaces, setpopularPlaces] = useState([]);
   const [historyCities, setHistoryCities] = useState([]);
+  const [cityHotels, setCityHotels] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8083/CityHotels")
+      .then((response) => response.json())
+      .then((data) => {
+        setCityHotels(data.CityHotels);
+      })
+      .catch((error) =>
+        console.error("Erreur lors de la récupération des données :", error)
+      );
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:8083/stadium")
@@ -60,6 +73,7 @@ const Home = () => {
           `}
         </style>
       </div>
+
       <Banding />
       <div className="stadiums">
         <div className="container">
@@ -90,7 +104,6 @@ const Home = () => {
             width:100%;
             height: 100%;
             padding: 10px 0;
-    
           }
 
           .image-container img {
@@ -176,7 +189,60 @@ const Home = () => {
     `}
         </style>
       </div>
+      <Banding />
+      <div id="cityList" style={{ backgroundColor: "#d9ac30" }}>
+        <div className="visit-hotels">
+          <br />
+          <Link to={`/hotels`}>
+            <img src={bgimg} alt="Hotels" className="img-fluidd rounded" />
+          </Link>
+          <br />
+          <Link to={`/hotels`}>
+            <button className="buttonHotels">Visit Hotels →</button>
+          </Link>
+          <style>
+            {`
+            .img-fluidd {
+              width:350px;
+              height: 220px;
+            }
+  
+            .visit-hotels img {
+              transition: transform 0.3s ease-in-out;
+            }
+  
+            .visit-hotels:hover img {
+              transform: scale(1.1);
+              filter: brightness(80%);
+              opacity: 0.8;
+            }
 
+            .visit-hotels {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              padding-right: 120px;
+              background-color: #d9ac30;
+              padding: 10px 0;
+            }
+
+            .buttonHotels {
+              background-color:#d9ac30;
+              color:#991a2d;
+              border:none;
+              float: right;
+              margin:5px 0px;
+              font-weight:bold;
+            }
+
+            .buttonHotels:hover {
+              ont-weight:bold;
+              text-decoration:underline;
+            }
+          `}
+          </style>
+        </div>
+      </div>
       <Banding />
       <div className="slider">
         <Link to={`/popular-places`}>
