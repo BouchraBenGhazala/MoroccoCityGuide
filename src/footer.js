@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="col-md-12 text-center">
             <p className="footer-text">
               © 2023 MoroccanCityGuide.<br/>
-              Bouchra BENGHAZALA - Oussama FECHTALI
+              Bouchra BENGHAZALA - Oussama FECHTALI ADOUI
             </p>
           </div>
         </div>
