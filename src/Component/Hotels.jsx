@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Carousel } from "react-bootstrap";
+import bgimg from "../Images/bghtls.jpg";
 import "./hotel.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -90,7 +91,7 @@ const HotelGallery = ({ photos }) => {
 };
 
 const HotelCard = ({ hotel, addToFavorites, removeFromFavorites }) => (
-  <div className="hotel-card">
+  <div className="hotel-card" style={{ backgroundColor: "rgb(240,235,229,255)" }}>
     <div className="hotel-photos">
       <HotelGallery photos={hotel.photos} />
     </div>
@@ -200,17 +201,38 @@ const Hotels = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: "rgb(240,235,229,255)",
+        backgroundColor: "#D9AC30",
         paddingBottom: "80px",
       }}
     >
-      <div style={{ marginTop: "120px" }}>
-        <h1 className="text-center mb-4 mt-4 beautiful-title">
-          Welcome To Our Hotels
-        </h1>
-        <div className="background-div">
-          <div style={{ marginTop: "30px" }}>
-            <p className="ml-5 mr-5 text-center text-hotels">
+      <div>
+        <div
+          className="background-image"
+          style={{
+            backgroundImage: `url(${bgimg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div className="overlay"></div>
+          <h1 className="text-center mb-4 mt-4 beautiful-Title">
+            Welcome To Our Hotels
+          </h1>
+        </div>
+        <div className="background-div"
+        style={{
+          color:"#FFFFFF",
+          padding:"20px",
+          marginBottom:"50px",
+          marginTop:"50px",
+          marginLeft:"70px",
+          marginRight:"70px",
+          backgroundColor: "#991A2D"
+        }}
+        >
+            <p className="ml-3 mr-3 text-center text-hotels">
               Welcome to our exclusive selection of hotels for the 2030 World
               Cup in Morocco, offering a diverse experience ranging from
               sophisticated five-star luxury to the welcoming warmth of
@@ -224,7 +246,6 @@ const Hotels = () => {
               unforgettable experience. We look forward to welcoming you, making
               your World Cup stay as memorable as the action on the field.
             </p>
-          </div>
         </div>
       </div>
 
@@ -326,6 +347,14 @@ const Hotels = () => {
 
       <style>
         {`
+            .beautiful-Title {
+              font-family: "Amiri", sans-serif;
+              color: #991a2d;
+              font-size: 2.5rem;
+              text-transform: uppercase;
+              letter-spacing: 2px;
+              text-shadow: 3px 3px 2px white;
+            }            
             @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
             .beautiful-title {
               font-family: 'Amiri', sans-serif;
@@ -382,19 +411,6 @@ const Hotels = () => {
         
             .city-link:hover {
               text-decoration: underline;
-            }
-
-            .add-to-favorites-btn {
-              background-color: #ff4081;
-              color: #fff;
-              border: none;
-              padding: 8px 12px;
-              cursor: pointer;
-              border-radius: 4px;
-            }
-  
-            .add-to-favorites-btn:hover {
-              background-color: #d81b60;
             }
             `}
       </style>

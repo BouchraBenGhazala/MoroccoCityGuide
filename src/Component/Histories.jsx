@@ -59,7 +59,7 @@ const Histories = () => {
               <li>
                 <div className="city-details">
                   <p>
-                  <p>{city.overview}</p>
+                    <p>{city.overview}</p>
                     <strong className="text-center mb-4 mt-4 beautiful-title">
                       Climate:
                     </strong>{" "}
