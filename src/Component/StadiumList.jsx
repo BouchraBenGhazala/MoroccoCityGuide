@@ -119,6 +119,7 @@ const StadiumList = () => {
             background-image: url(${homeBG});
             background-size: cover; 
             padding-top:560px;
+            height: 100vh;
           }
           a {
             text-decoration: none;

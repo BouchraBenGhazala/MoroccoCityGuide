@@ -46,7 +46,7 @@ const Home = () => {
           .homeContainer {
             background-image: url(${homeBG});
             background-size: cover; 
-            height:560px;
+            height: 100vh;;
           }
           .title{
             padding-top: 200px;

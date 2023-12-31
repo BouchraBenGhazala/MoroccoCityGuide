@@ -35,7 +35,7 @@ const PopularPlaces = () => {
           .homeContainer {
             background-image: url(${pageBG});
             background-size: cover; 
-            height:560px;
+            height: 100vh;
             filter: brightness(70%);
             opacity: 0.9;
           }

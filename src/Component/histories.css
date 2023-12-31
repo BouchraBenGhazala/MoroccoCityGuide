@@ -4,6 +4,15 @@ body {
   padding: 0;
 }
 
+.beautiful-Title {
+  font-family: "Amiri", sans-serif;
+  color: #991a2d;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 2px white;
+}
+
 .beautiful-title {
   font-family: "Amiri", sans-serif;
   color: #991a2d;
@@ -74,6 +83,10 @@ body {
   justify-content: space-around;
 }
 
+.city-details{
+margin-left: -50px;
+}
+
 .city-content li {
   flex: 1;
   min-width: 300px;
@@ -132,7 +145,7 @@ body {
   transition: transform 0.3s, all 2s;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
   .city-image img {
     margin-left: 100px;
   }
