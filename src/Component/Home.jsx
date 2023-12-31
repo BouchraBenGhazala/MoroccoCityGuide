@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../footer";
 import homeBG from "../pubsImages/bg9.jpg";
-import festival from "../Images/festivals.jpeg";
-import food from "../Images/Moroccan-Food.jpg";
-import crafts from "../Images/crafts.jpg";
-import clothes from "../Images/clothess.jpg";
 import { Link } from "react-router-dom";
 import Banding from "../banding";
 import { Carousel } from "react-responsive-carousel";
@@ -123,9 +119,114 @@ const Home = () => {
           `}
         </style>
       </div>
-      
+      <Banding />
+      <div className="histories">
+        <div className="container">
+          <div className="row">
+            <Link to={`/histories`}>
+              <button className="buttonHistories">Explore Histories →</button>
+            </Link>
+            {historyCities.map((city) => (
+              <div key={city.id} className="col-4 image-container">
+                <Link to={`/histories/`}>
+                  <img
+                    src={city.image}
+                    alt={city.cityName}
+                    className="img-fluid rounded"
+                  />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+        <style>
+          {`
+      .histories {
+        background-color: #d9ac30;
+        padding: 10px 0;
+      }
+      .img-fluid {
+        width: 100%;
+        height: 100%;
+        padding: 10px 0;
+      }
 
-      
+      .image-container img {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .image-container:hover img {
+        transform: scale(1.1);
+        filter: brightness(80%);
+        opacity: 0.8;
+      }
+      .buttonHistories {
+        background-color: #d9ac30;
+        color: #991a2d;
+        border: none;
+        float: right;
+        margin: 5px 0px;
+        font-weight: bold;
+      }
+
+      .buttonHistories:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    `}
+        </style>
+      </div>
+
+      <Banding />
+      <div className="slider">
+        <Link to={`/popular-places`}>
+          <button className="buttonPlaces">Visit Popular places →</button>
+        </Link>
+
+        <Carousel autoPlay infiniteLoop showThumbs={false}>
+          {popularPlaces.map((popularPlace) => (
+            <div key={popularPlace.city}>
+              {popularPlace.places.map(
+                (place, index) =>
+                  index === 0 && (
+                    <div key={place.name} className="slide">
+                      <img
+                        src={place.image}
+                        alt={place.name}
+                        className="slide-image"
+                        style={{ width: "100%", height: "490px" }}
+                      />
+                    </div>
+                  )
+              )}
+
+              <br />
+            </div>
+          ))}
+        </Carousel>
+        <style>
+          {`
+            .slider{
+              background-color: #d9ac30;
+            }
+            .buttonPlaces{
+              background-color:#d9ac30;
+              color:#991a2d;
+              border:none;
+              float: right;
+              margin:5px 0px;
+              font-weight:bold;
+            }
+  
+            .buttonPlaces:hover{
+              font-weight:bold;
+              text-decoration:underline;
+            
+            }
+            `}
+        </style>
+      </div>
+      <Banding />
       <div className="foot">
         <Footer />
         <style>
