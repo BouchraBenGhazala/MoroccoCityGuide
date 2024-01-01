@@ -60,7 +60,7 @@ const Histories = () => {
                 <div className="city-details">
                   <p>
                     <p>{city.overview}</p>
-                    <strong className="text-center mb-4 mt-4 beautiful-title">
+                    <strong className="beautiful-title" style={{fontSize:"1rem"}}>
                       Climate:
                     </strong>{" "}
                     {city.climate}
