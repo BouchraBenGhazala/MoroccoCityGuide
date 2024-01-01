@@ -210,12 +210,12 @@ const Hotels = () => {
     setFavouriteHotels([...favouriteHotels, hotel]);
   };
 
-  const removeFromFavorites = (hotel) => {
-    const updatedFavourites = favouriteHotels.filter(
-      (favHotel) => favHotel.id !== hotel.id
-    );
+  const removeFromFavorites = (index) => {
+    const updatedFavourites = [...favouriteHotels];
+    updatedFavourites.splice(index, 1);
     setFavouriteHotels(updatedFavourites);
   };
+  
 
   const filterHotels = (cityName, stars) => {
     const filteredCityHotels = cityHotels.map((city) => {
@@ -364,7 +364,6 @@ const Hotels = () => {
         ))}
       </div>
 
-      {/* Liste des hôtels filtrés */}
       {filteredHotels
         .filter(
           (city) => city.cityName.toLowerCase() === selectedCity.toLowerCase()
@@ -398,14 +397,14 @@ const Hotels = () => {
         ))}
 
       <div>
-        <h2 className="beautiful-title" style={{ marginTop: "50px"}}>
+        <h2 className="beautiful-title" style={{ marginTop: "50px" }}>
           Favourite Hotels
         </h2>
-        {favouriteHotels.map((hotel) => (
+        {favouriteHotels.map((hotel, index) => (
           <HotelCard
             key={hotel.id}
             hotel={hotel}
-            removeFromFavorites={() => removeFromFavorites(hotel)}
+            removeFromFavorites={() => removeFromFavorites(index)}
             isFavourite={true}
           />
         ))}
