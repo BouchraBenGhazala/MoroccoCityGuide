@@ -46,7 +46,7 @@ const Traditions = () => {
         >
           <div className="overlay"></div>
           <h1 className="text-center beautiful-Title">
-          Moroccan's Popular Stadiums
+          Explore Moroccan's Traditions
           </h1>
         </div>
         <style>

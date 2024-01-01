@@ -261,7 +261,7 @@ const Hotels = () => {
         >
           <div className="overlay"></div>
           <h1 className="text-center mb-4 mt-4 beautiful-Title">
-            Welcome To Our Hotels
+            Disover Moroccan Hotels
           </h1>
         </div>
         <div
