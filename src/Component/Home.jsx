@@ -4,6 +4,10 @@ import homeBG from "../pubsImages/bg9.jpg";
 import { Link } from "react-router-dom";
 import Banding from "../banding";
 import bgimg from "../Images/bghtls.jpg";
+import festival from "../Images/festivals.jpeg";
+import food from "../Images/Moroccan-Food.jpg";
+import crafts from "../Images/crafts.jpg";
+import clothes from "../Images/clothess.jpg";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -310,6 +314,82 @@ const Home = () => {
    
 
       <Banding />
+      <div className="traditions">
+      <Link to={`/traditions`}><button className="buttonPlaces">Visit Traditions →</button></Link>
+
+      <div className='container'>
+              <div className='row'>
+                  <div className='colmn col-3'>
+                    <img
+                      src={festival}
+                      alt={festival}
+                      className='img-fluid mx-auto d-block'
+                      style={{ maxWidth: '100%', height: "100%"  }}
+                      
+                    />
+                    <p style={{ position: 'absolute', bottom: '0', left: '0', right: '0', textAlign: 'center', color: 'white', padding: '0px', fontWeight: 'bold', fontSize: '1.2rem' }}>Festivals</p>
+                  </div>
+                  <div className='colmn col-3'>
+                    <img
+                      src={food}
+                      alt={food}
+                      className='img-fluid mx-auto d-block'
+                      style={{ maxWidth: '100%', height: '100%' }}
+                      
+                    />
+                    <p style={{ position: 'absolute', bottom: '0', left: '0', right: '0', textAlign: 'center', color: 'white', padding: '0px', fontWeight: 'bold', fontSize: '1.2rem' }}>local cuisine</p>
+                  </div>
+                  <div className='colmn col-3'>
+                    <img
+                      src={crafts}
+                      alt={crafts}
+                      className='img-fluid mx-auto d-block'
+                      style={{ maxWidth: '100%', height: '100%' }}
+                      
+                    />
+                    <p style={{ position: 'absolute', bottom: '0', left: '0', right: '0', textAlign: 'center', color: 'white', padding: '0px', fontWeight: 'bold', fontSize: '1.2rem' }}>crafts</p>
+                  </div>
+                  <div className='colmn col-3'>
+                    <img
+                      src={clothes}
+                      alt={clothes}
+                      className='img-fluid mx-auto d-block'
+                      style={{ maxWidth: '100%', height: '100%' }}
+                      
+                    />
+                    <p style={{ position: 'absolute', bottom: '0', left: '0', right: '0', textAlign: 'center', color:'white' , padding: '0px', fontWeight: 'bold', fontSize: '1.2rem' }}>traditional clothing</p>
+                  </div>
+              </div>
+              
+            </div>
+            <style>
+          {
+            `
+   
+            .traditions{
+              background-color:#d9ac30;
+              padding : 10px 0px;
+            }
+    
+            .colmn:hover {
+              transform: scale(1.1);
+            }
+
+            .img-fluid:hover {
+              filter: brightness(80%);
+            }
+
+            .img-fluid {
+              border-top-left-radius: 80px;
+              border-top-right-radius: 80px;
+              border-bottom-left-radius: 50px;
+              border-bottom-right-radius: 50px;
+            }
+
+            `
+          }
+        </style>
+            </div>
       <div className="foot">
         <Footer />
         <style>
