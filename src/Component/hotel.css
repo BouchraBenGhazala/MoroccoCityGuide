@@ -4,6 +4,31 @@
   margin: 0 10px;
 }
 
+.bouton {
+  text-decoration: none;
+  padding: 10px;
+  font-family: verdana;
+  font-size: 1em;
+  color: #D9AC30;
+  background-color: #991A2D;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  border: 1px solid #991A2D;
+  box-shadow: 0px 0px 0px #D9AC30;
+  -webkit-box-shadow: 0px 0px 0px #D9AC30;
+  -moz-box-shadow: 0px 0px 0px #D9AC30;
+  }
+  
+  
+  .bouton:hover {
+  padding: 10px;
+  border: 0px solid #D9AC30;
+  box-shadow: 8px 6px 12px #D9AC30;
+  -webkit-box-shadow: 8px 6px 12px #D9AC30;
+  -moz-box-shadow: 8px 6px 12px #D9AC30;
+  }
+
 
 .search-bar {
   margin-bottom: 20px;
@@ -122,4 +147,69 @@ datalist {
 
 .search-bar button:hover {
   background-color: #0056b3;
+}
+.beautiful-Title {
+  font-family: "Amiri", sans-serif;
+  color: #991a2d;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 2px white;
+}            
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
+.beautiful-title {
+  font-family: 'Amiri', sans-serif;
+  color: #991a2d;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+.text-hotels{
+  font-family: 'Amiri', sans-serif;
+}
+
+.hotel-card {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.hotel-photos {
+  flex: 1;
+}
+
+.hotel-details {
+  flex: 2;
+  padding: 0 10px;
+}
+
+.hotel-title {
+  font-family: 'Amiri', sans-serif;
+  color: #991a2d;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.city-title {
+  font-family: 'Amiri', sans-serif;
+  color: #991a2d;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.city-link {
+  color: #991a2d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.city-link:hover {
+  text-decoration: underline;
 }

@@ -90,50 +90,78 @@ const HotelGallery = ({ photos }) => {
   );
 };
 
-const HotelCard = ({ hotel, addToFavorites, removeFromFavorites }) => (
-  <div
-    className="hotel-card"
-    style={{ backgroundColor: "rgb(240,235,229,255)" }}
-  >
-    <div className="hotel-photos">
-      <HotelGallery photos={hotel.photos} />
-    </div>
-    <div className="hotel-details">
-      <h5 className="hotel-title" style={{ marginTop: "40px" }}>
-        {hotel.name}
-      </h5>
-      <p style={{ margin: "25px 0" }}>
-        <FontAwesomeIcon icon={faMapMarkerAlt} style={{ marginRight: "5px" }} />
-        <span className="text-muted font-weight-bold">{hotel.address}</span>
-      </p>
-      <p style={{ margin: "25px 0" }}>
-        Stars:{" "}
-        <span className="text-muted font-weight-bold">
-          {Array.from({ length: hotel.stars }, (_, index) => (
-            <FontAwesomeIcon
-              icon={faStar}
-              key={index}
-              style={{ color: "#FFD700" }}
-            />
-          ))}
-        </span>
-      </p>
-      <p style={{ margin: "25px 0" }}>
-        Amenities:{" "}
-        <span className="text-muted font-weight-bold">
-          {hotel.amenities.join(", ")}
-        </span>
-      </p>
-      <p style={{ margin: "25px 0" }}>
-        Average Price for 2 Persons:{" "}
-        <span className="text-muted font-weight-bold">
-          {hotel.averagePriceFor2Persn}
-        </span>
-      </p>
-    </div>
-  </div>
-);
+const HotelCard = ({
+  hotel,
+  addToFavorites,
+  removeFromFavorites,
+  isFavourite,
+}) => {
+  const handleAddToFavorites = () => {
+    addToFavorites(hotel);
+  };
 
+  const handleRemoveFromFavorites = () => {
+    removeFromFavorites(hotel);
+  };
+
+  return (
+    <div
+      className="hotel-card"
+      style={{ backgroundColor: "rgb(240,235,229,255)" }}
+    >
+      <div className="hotel-photos">
+        <HotelGallery photos={hotel.photos} />
+      </div>
+      <div className="hotel-details">
+        <h5 className="hotel-title" style={{ marginTop: "40px" }}>
+          {hotel.name}
+        </h5>
+        <p style={{ margin: "25px 0" }}>
+          <FontAwesomeIcon
+            icon={faMapMarkerAlt}
+            style={{ marginRight: "5px" }}
+          />
+          <span className="text-muted font-weight-bold">{hotel.address}</span>
+        </p>
+        <p style={{ margin: "25px 0" }}>
+          Stars:{" "}
+          <span className="text-muted font-weight-bold">
+            {Array.from({ length: hotel.stars }, (_, index) => (
+              <FontAwesomeIcon
+                icon={faStar}
+                key={index}
+                style={{ color: "#FFD700" }}
+              />
+            ))}
+          </span>
+        </p>
+        <p style={{ margin: "25px 0" }}>
+          Amenities:{" "}
+          <span className="text-muted font-weight-bold">
+            {hotel.amenities.join(", ")}
+          </span>
+        </p>
+        <p style={{ margin: "25px 0" }}>
+          Average Price for 2 Persons:{" "}
+          <span className="text-muted font-weight-bold">
+            {hotel.averagePriceFor2Persn}
+          </span>
+        </p>
+        <p>
+          {isFavourite ? (
+            <button onClick={handleRemoveFromFavorites} className="bouton">
+              Remove from Favorites
+            </button>
+          ) : (
+            <button onClick={handleAddToFavorites} className="bouton">
+              Add to Favorites
+            </button>
+          )}
+        </p>
+      </div>
+    </div>
+  );
+};
 const Hotels = () => {
   const [cityHotels, setCityHotels] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -141,6 +169,7 @@ const Hotels = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedStars, setSelectedStars] = useState([]);
   const [filteredHotels, setFilteredHotels] = useState([]);
+  const [favouriteHotels, setFavouriteHotels] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8083/CityHotels")
@@ -175,6 +204,17 @@ const Hotels = () => {
       setSelectedStars(updatedStars);
       filterHotels(selectedCity, updatedStars);
     }
+  };
+
+  const addToFavorites = (hotel) => {
+    setFavouriteHotels([...favouriteHotels, hotel]);
+  };
+
+  const removeFromFavorites = (hotel) => {
+    const updatedFavourites = favouriteHotels.filter(
+      (favHotel) => favHotel.id !== hotel.id
+    );
+    setFavouriteHotels(updatedFavourites);
   };
 
   const filterHotels = (cityName, stars) => {
@@ -323,6 +363,8 @@ const Hotels = () => {
           </label>
         ))}
       </div>
+
+      {/* Liste des hôtels filtrés */}
       {filteredHotels
         .filter(
           (city) => city.cityName.toLowerCase() === selectedCity.toLowerCase()
@@ -345,80 +387,29 @@ const Hotels = () => {
               </p>
             </h3>
             {city.hotels.map((hotel, index) => (
-              <HotelCard key={index} hotel={hotel} />
+              <HotelCard
+                key={index}
+                hotel={hotel}
+                addToFavorites={() => addToFavorites(hotel)}
+                removeFromFavorites={() => removeFromFavorites(hotel)}
+              />
             ))}
           </div>
         ))}
 
-      <style>
-        {`
-            .beautiful-Title {
-              font-family: "Amiri", sans-serif;
-              color: #991a2d;
-              font-size: 2.5rem;
-              text-transform: uppercase;
-              letter-spacing: 2px;
-              text-shadow: 3px 3px 2px white;
-            }            
-            @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
-            .beautiful-title {
-              font-family: 'Amiri', sans-serif;
-              color: #991a2d;
-              font-size: 2.5rem;
-              text-transform: uppercase;
-              letter-spacing: 2px;
-              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-              margin-bottom: 20px;
-            }
-            .text-hotels{
-              font-family: 'Amiri', sans-serif;
-            }
-
-            .hotel-card {
-              display: flex;
-              margin: 10px;
-              padding: 10px;
-              border: 1px solid #ccc;
-              border-radius: 8px;
-            }
-
-            .hotel-photos {
-              flex: 1;
-            }
-
-            .hotel-details {
-              flex: 2;
-              padding: 0 10px;
-            }
-
-            .hotel-title {
-              font-family: 'Amiri', sans-serif;
-              color: #991a2d;
-              font-size: 1.8rem;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              margin-bottom: 10px;
-            }
-
-            .city-title {
-              font-family: 'Amiri', sans-serif;
-              color: #991a2d;
-              font-size: 1.8rem;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              margin-bottom: 10px;
-            }
-            .city-link {
-              color: #991a2d;
-              font-weight: bold;
-              text-decoration: none;
-            }
-        
-            .city-link:hover {
-              text-decoration: underline;
-            }
-            `}
-      </style>
+      <div>
+        <h2 className="beautiful-title" style={{ marginTop: "50px"}}>
+          Favourite Hotels
+        </h2>
+        {favouriteHotels.map((hotel) => (
+          <HotelCard
+            key={hotel.id}
+            hotel={hotel}
+            removeFromFavorites={() => removeFromFavorites(hotel)}
+            isFavourite={true}
+          />
+        ))}
+      </div>
     </div>
   );
 };
