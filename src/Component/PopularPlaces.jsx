@@ -28,25 +28,44 @@ const PopularPlaces = () => {
 
   return (
     <div className='ContainerPlaces'>
-      <div className="homeContainer">
-        <h1 className="text-center beautiful-title">Moroccan's Popular Places</h1>
+        <div className="homeContainer">
+      <div
+          className="background-image"
+          style={{
+            backgroundImage: `url(${pageBG})`,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div className="overlay"></div>
+          <h1 className="text-center beautiful-Title">
+          Moroccan's Popular Places
+          </h1>
+        </div>
         <style>
           {`
           .homeContainer {
-            background-image: url(${pageBG});
-            background-size: cover; 
-            height: 100vh;
-            filter: brightness(70%);
-            opacity: 0.9;
+            text-align: center;
+            position: relative;
           }
           .beautiful-title {
             font-family: 'Amiri', sans-serif;
-            color: #991a2d;
-            font-size: 2.5rem;
+            color: #991a2d; /* Your preferred text color */
+            font-size: 2.5rem; /* Adjust the font size as needed */
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 3px 3px 2px white;
-            padding-top:250px;
+            letter-spacing: 2px; /* Adjust the letter spacing as needed */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle text shadow */
+            margin-bottom: 20px; /* Adjust the margin as needed */
+          }
+          .background-image {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: brightness(80%);
+            opacity: 0.9;
           }
           `}
         </style>

@@ -22,10 +22,47 @@ const StadiumList = () => {
   return (
    
     <div className='ContainerStadium'>
-      <div className='headStadiums'>
-  
+        <div className="homeContainer">
+      <div
+          className="background-image"
+          style={{
+            backgroundImage: `url(${homeBG})`,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div className="overlay"></div>
+          <h1 className="text-center beautiful-Title">
+          Moroccan's Popular Stadiums
+          </h1>
+        </div>
+        <style>
+          {`
+          .homeContainer {
+            text-align: center;
+            position: relative;
+          }
+          .beautiful-title {
+            font-family: 'Amiri', sans-serif;
+            color: #991a2d; /* Your preferred text color */
+            font-size: 2.5rem; /* Adjust the font size as needed */
+            text-transform: uppercase;
+            letter-spacing: 2px; /* Adjust the letter spacing as needed */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle text shadow */
+            margin-bottom: 20px; /* Adjust the margin as needed */
+          }
+          .background-image {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          `}
+        </style>
       </div>
-      <h1 className='text-center mb-4 beautiful-title mt-4'>Moroccan's Popular Stadiums</h1>
+      {/* <h1 className='text-center mb-4 beautiful-title mt-4'>Moroccan's Popular Stadiums</h1> */}
       <div className="row background-div p-4">
         <div className='col-8'>
         <p className='ml-3 mr-3'>In a historic moment for Moroccan football, the nation is set to play host to the FIFA World Cup in 2030 across six distinguished stadiums.

@@ -50,30 +50,94 @@ const Home = () => {
       style={{ display: "flex", flexDirection: "column" }}
     >
       <div className="homeContainer">
-        <h1 className="title">
+      <div
+          className="background-image"
+          style={{
+            backgroundImage: `url(${homeBG})`,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div className="overlay"></div>
+          <h1 className="text-center beautiful-Title">
           Welcome to the guide of most
-          <br /> popular Moroccan Cities
-        </h1>
+          <br /> popular Moroccan Cities
+          </h1>
+        </div>
         <style>
           {`
           .homeContainer {
-            background-image: url(${homeBG});
-            background-size: cover; 
-            height: 100vh;;
+            text-align: center;
+            position: relative;
           }
-          .title{
-            padding-top: 200px;
+          .beautiful-Title{
+            padding-top: 100px;
             color:#991a2d;
             font-family: 'Amiri', sans-serif;
             font-size:50px;
             font-weight:bold;
-            text-shadow: 2px 2px 4px #d9ac30;
+            text-shadow: 3px 3px 4px #d9ac30;
 
+          }
+          .background-image {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
           `}
         </style>
       </div>
+      <div className="slider">
+        <Link to={`/popular-places`}>
+          <button className="buttonPlaces">Visit Popular places →</button>
+        </Link>
 
+        <Carousel autoPlay infiniteLoop showThumbs={false}>
+          {popularPlaces.map((popularPlace) => (
+            <div key={popularPlace.city}>
+              {popularPlace.places.map(
+                (place, index) =>
+                  index === 0 && (
+                    <div key={place.name} className="slide">
+                      <img
+                        src={place.image}
+                        alt={place.name}
+                        className="slide-image"
+                        style={{ width: "100%", height: "490px" }}
+                      />
+                    </div>
+                  )
+              )}
+
+              <br />
+            </div>
+          ))}
+        </Carousel>
+        <style>
+          {`
+            .slider{
+              background-color: #d9ac30;
+            }
+            .buttonPlaces{
+              background-color:#d9ac30;
+              color:#991a2d;
+              border:none;
+              float: right;
+              margin:5px 0px;
+              font-weight:bold;
+            }
+  
+            .buttonPlaces:hover{
+              font-weight:bold;
+              text-decoration:underline;
+            
+            }
+            `}
+        </style>
+      </div>
       <Banding />
       <div className="stadiums">
         <div className="container">
@@ -243,55 +307,8 @@ const Home = () => {
           </style>
         </div>
       </div>
-      <Banding />
-      <div className="slider">
-        <Link to={`/popular-places`}>
-          <button className="buttonPlaces">Visit Popular places →</button>
-        </Link>
+   
 
-        <Carousel autoPlay infiniteLoop showThumbs={false}>
-          {popularPlaces.map((popularPlace) => (
-            <div key={popularPlace.city}>
-              {popularPlace.places.map(
-                (place, index) =>
-                  index === 0 && (
-                    <div key={place.name} className="slide">
-                      <img
-                        src={place.image}
-                        alt={place.name}
-                        className="slide-image"
-                        style={{ width: "100%", height: "490px" }}
-                      />
-                    </div>
-                  )
-              )}
-
-              <br />
-            </div>
-          ))}
-        </Carousel>
-        <style>
-          {`
-            .slider{
-              background-color: #d9ac30;
-            }
-            .buttonPlaces{
-              background-color:#d9ac30;
-              color:#991a2d;
-              border:none;
-              float: right;
-              margin:5px 0px;
-              font-weight:bold;
-            }
-  
-            .buttonPlaces:hover{
-              font-weight:bold;
-              text-decoration:underline;
-            
-            }
-            `}
-        </style>
-      </div>
       <Banding />
       <div className="foot">
         <Footer />

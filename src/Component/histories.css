@@ -56,8 +56,8 @@ body {
 .city-card {
   display: flex;
   align-items: center;
-  padding: 20px;
-  margin: 20px;
+  padding: 10px;
+  margin: 10px;
   transition: transform 0.3s;
   width: 80%;
   margin: 0 auto;
