@@ -39,7 +39,7 @@ const PopularPlaces = () => {
         >
           <div className="overlay"></div>
           <h1 className="text-center beautiful-Title">
-          Moroccan's Popular Places
+          Visit Moroccan's Popular Places
           </h1>
         </div>
         <style>

@@ -42,6 +42,7 @@ const StadiumList = () => {
             text-align: center;
             position: relative;
           }
+          
           .beautiful-title {
             font-family: 'Amiri', sans-serif;
             color: #991a2d; /* Your preferred text color */
