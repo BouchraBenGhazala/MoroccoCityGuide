@@ -43,17 +43,17 @@ const Navbar = () => {
                   >
                     <ul className="navbar-nav mx-auto h4 ">
                       <li className="nav-item mr-4">
-                        <NavLink to="/"  className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
+                        <NavLink to="/"  className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`} activeClassName="active">
                           Home
                         </NavLink>
                       </li>
                       <li className="nav-item mr-4">
-                        <NavLink to="/stadiums" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
+                        <NavLink to="/stadiums" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`} activeClassName="active">
                           Stadiums
                         </NavLink>
                       </li>
                       <li className="nav-item mr-4">
-                        <NavLink to="/histories" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
+                        <NavLink to="/histories" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`} activeClassName="active">
                           Histories
                         </NavLink>
                       </li>
@@ -63,17 +63,17 @@ const Navbar = () => {
                       </li>
 
                       <li className="nav-item mr-4">
-                        <NavLink to="/hotels" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
+                        <NavLink to="/hotels" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`} activeClassName="active">
                           Hotels
                         </NavLink>
                       </li>
                       <li className="nav-item mr-4">
-                        <NavLink to="/traditions" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
+                        <NavLink to="/traditions" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`} activeClassName="active">
                           Traditions
                         </NavLink>
                       </li>
                       <li className="nav-item mr-4">
-                        <NavLink to="/popular-places" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`}>
+                        <NavLink to="/popular-places" className={`nav-link ${scrolling ? 'custom-color' : 'custom-color2'}`} activeClassName="active">
                           Popular Places
                         </NavLink>
                       </li>
@@ -107,16 +107,15 @@ const Navbar = () => {
                       font-weight: bold;
                       margin-top:30px;
                       
-
+                    }
+                    .nav-link.active {
+                      color: red !important;
                     }
                     .nav-link:hover{
                       color:red;
                       font-size:25px;
                     }
-                   
-                    .nav-link.active{
-                      color:red;
-                  }
+
                     .navbar{
                       font-family: 'Amiri', sans-serif;
                       

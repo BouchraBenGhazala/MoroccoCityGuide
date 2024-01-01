@@ -5,6 +5,8 @@ import "./histories.css";
 import React, { useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import animationData from "../animations/morocco logo.json";
+import Banding from "../banding";
+import Footer from "../footer";
 
 const Histories = () => {
   const [historyCities, setHistoryCities] = useState([]);
@@ -112,7 +114,9 @@ const Histories = () => {
         animationData={animationData}
         style={{ width: "20%", height: "20%" }}
       ></Lottie>
+      <Footer/>
     </div>
+    
   );
 };
 
