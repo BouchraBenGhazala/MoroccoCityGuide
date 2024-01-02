@@ -172,6 +172,14 @@ const Hotels = () => {
   const [favouriteHotels, setFavouriteHotels] = useState([]);
 
   useEffect(() => {
+    const storedFavorites = localStorage.getItem("favouriteHotels");
+    if (storedFavorites) {
+      setFavouriteHotels(JSON.parse(storedFavorites));
+    }
+  }, []);
+  
+
+  useEffect(() => {
     fetch("http://localhost:8083/CityHotels")
       .then((response) => response.json())
       .then((data) => {
@@ -207,14 +215,19 @@ const Hotels = () => {
   };
 
   const addToFavorites = (hotel) => {
-    setFavouriteHotels([...favouriteHotels, hotel]);
+    const updatedFavorites = [...favouriteHotels, hotel];
+    setFavouriteHotels(updatedFavorites);
+    localStorage.setItem("favouriteHotels", JSON.stringify(updatedFavorites));
   };
+  
 
   const removeFromFavorites = (index) => {
-    const updatedFavourites = [...favouriteHotels];
-    updatedFavourites.splice(index, 1);
-    setFavouriteHotels(updatedFavourites);
+    const updatedFavorites = [...favouriteHotels];
+    updatedFavorites.splice(index, 1);
+    setFavouriteHotels(updatedFavorites);
+    localStorage.setItem("favouriteHotels", JSON.stringify(updatedFavorites));
   };
+  
   
 
   const filterHotels = (cityName, stars) => {
